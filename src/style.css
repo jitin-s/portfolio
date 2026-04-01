@@ -19,6 +19,12 @@
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+
+  /* Theme Elevation and Surface Tokens */
+  --bg-surface-0: #030305;
+  --bg-surface-1: #0a0a0f;
+  --bg-surface-2: #12131c;
+  --bg-surface-glass: rgba(18, 19, 28, 0.72);
 }
 
 * {
