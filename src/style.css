@@ -25,6 +25,11 @@
   --bg-surface-1: #0a0a0f;
   --bg-surface-2: #12131c;
   --bg-surface-glass: rgba(18, 19, 28, 0.72);
+
+  /* WCAG AA High Contrast Text Colors */
+  --text-accessible-primary: #ffffff;
+  --text-accessible-subtle: #cbd5e1;
+  --text-accessible-muted: #94a3b8;
 }
 
 * {
