@@ -41,6 +41,15 @@
   --tracking-normal: 0em;
   --tracking-wide: 0.05em;
   --tracking-widest: 0.125em;
+
+  /* Fluid Modular Font Scale */
+  --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.8125rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.35vw, 0.9375rem);
+  --font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  --font-size-xl: clamp(1.35rem, 1.25rem + 0.5vw, 1.5rem);
+  --font-size-2xl: clamp(1.75rem, 1.5rem + 1vw, 2.125rem);
+  --font-size-3xl: clamp(2.25rem, 1.85rem + 1.8vw, 3rem);
 }
 
 * {
