@@ -50,6 +50,13 @@
   --font-size-xl: clamp(1.35rem, 1.25rem + 0.5vw, 1.5rem);
   --font-size-2xl: clamp(1.75rem, 1.5rem + 1vw, 2.125rem);
   --font-size-3xl: clamp(2.25rem, 1.85rem + 1.8vw, 3rem);
+
+  /* Line Height Leading Tokens */
+  --leading-none: 1;
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.75;
 }
 
 * {
