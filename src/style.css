@@ -2587,3 +2587,10 @@ footer {
 }
 
 
+
+/* Universal Accessible Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.45);
+}
