@@ -2336,7 +2336,8 @@ footer {
   position: absolute;
   inset: 0;
   background: rgba(6, 6, 9, 0.78);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(16px);
 }
 
