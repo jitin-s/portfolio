@@ -2629,3 +2629,15 @@ footer {
   top: 20px;
   outline: 3px solid #ffffff;
 }
+
+/* Navbar Bottom Border Subtle Glow */
+.navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3) 50%, transparent);
+  pointer-events: none;
+}
