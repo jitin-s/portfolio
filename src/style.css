@@ -2641,3 +2641,13 @@ footer {
   background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3) 50%, transparent);
   pointer-events: none;
 }
+
+/* Brand Hex Hover Micro-Interaction */
+.brand-hex {
+  transition: transform 0.3s var(--ease-spring-snap), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.brand:hover .brand-hex {
+  transform: scale(1.08) rotate(6deg);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
+}
