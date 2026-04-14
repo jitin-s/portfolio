@@ -2651,3 +2651,10 @@ footer {
   border-color: var(--accent-cyan);
   box-shadow: 0 0 16px rgba(0, 240, 255, 0.5);
 }
+
+/* Active Navigation Pill Indicator */
+.nav-link.active {
+  background: rgba(0, 240, 255, 0.08);
+  border-radius: 6px;
+  box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.15);
+}
