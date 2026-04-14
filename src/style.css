@@ -2658,3 +2658,23 @@ footer {
   border-radius: 6px;
   box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.15);
 }
+
+/* Nav Item Underline Hover Transition */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.25s var(--ease-out-expo), left 0.25s var(--ease-out-expo);
+  border-radius: 2px;
+}
+.nav-link:hover::after {
+  width: 70%;
+  left: 15%;
+}
