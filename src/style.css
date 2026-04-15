@@ -2687,3 +2687,8 @@ footer {
     padding: 0 12px;
   }
 }
+
+/* Mobile Cyber Dock Safe Area Adaptation */
+.mobile-bottom-dock {
+  padding-bottom: max(10px, env(safe-area-inset-bottom));
+}
