@@ -9,6 +9,7 @@ import { AnimeCycleEngine } from './anime-cycle.js';
 import { DEFAULT_GITHUB_DATA, fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
 import { CyberCommandPalette } from './command-palette.js';
 import confetti from 'canvas-confetti';
+import { smoothScrollToTarget } from './utils.js';
 
 // Ensure browser always starts strictly at the top of the page on refresh or initial load
 if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
