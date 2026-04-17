@@ -9,3 +9,16 @@ export function smoothScrollToTarget(targetId, offset = 70) {
     behavior: 'smooth'
   });
 }
+
+// Passive touch event listener support
+export const passiveOption = (() => {
+  let supportsPassive = false;
+  try {
+    const opts = Object.defineProperty({}, 'passive', {
+      get() { supportsPassive = true; return true; }
+    });
+    window.addEventListener('testPassive', null, opts);
+    window.removeEventListener('testPassive', null, opts);
+  } catch (e) {}
+  return supportsPassive ? { passive: true } : false;
+})();
