@@ -2715,3 +2715,8 @@ footer {
   color: var(--accent-cyan);
   box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.4);
 }
+
+.btn-palette-trigger:hover {
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  border-color: var(--accent-cyan);
+}
