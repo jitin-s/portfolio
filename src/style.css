@@ -2726,3 +2726,12 @@ footer {
   text-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
   letter-spacing: var(--tracking-tight);
 }
+
+.vibe-pill {
+  transition: transform 0.2s var(--ease-spring-snap), border-color 0.2s ease, background 0.2s ease;
+}
+.vibe-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(0, 240, 255, 0.08);
+}
