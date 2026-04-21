@@ -2720,3 +2720,9 @@ footer {
   box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
   border-color: var(--accent-cyan);
 }
+
+/* Hero Title Gradient Accent */
+.hero-title {
+  text-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+  letter-spacing: var(--tracking-tight);
+}
