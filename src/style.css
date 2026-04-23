@@ -2766,3 +2766,11 @@ footer {
 .btn-primary:active, .btn-secondary:active, .btn-submit:active {
   transform: scale(0.97);
 }
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.btn-secondary:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.05);
+}
