@@ -2762,3 +2762,7 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0, 240, 255, 0.45);
 }
+
+.btn-primary:active, .btn-secondary:active, .btn-submit:active {
+  transform: scale(0.97);
+}
