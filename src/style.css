@@ -2794,3 +2794,10 @@ footer {
   -webkit-text-fill-color: transparent;
   font-weight: 800;
 }
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
