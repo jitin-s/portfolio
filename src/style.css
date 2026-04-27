@@ -2801,3 +2801,16 @@ footer {
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
 }
+
+/* Tech Stack Badge Pills */
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-accessible-subtle);
+}
