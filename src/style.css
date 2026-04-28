@@ -2819,3 +2819,13 @@ footer {
   border-color: var(--accent-cyan);
   color: var(--accent-cyan);
 }
+
+/* Project Stars Layout */
+.project-star-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: #fbbf24;
+}
