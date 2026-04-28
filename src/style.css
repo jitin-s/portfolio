@@ -2829,3 +2829,7 @@ footer {
   font-family: var(--font-mono);
   color: #fbbf24;
 }
+
+.project-card:hover, .tilt-card:hover {
+  border-color: rgba(0, 240, 255, 0.45);
+}
