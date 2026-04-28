@@ -167,7 +167,7 @@ const REPO_METADATA = {
     icon: '🌌',
     desc: 'GenZ aesthetic 3D dark anime portfolio with real-time GitHub sync, Three.js WebGL, and Sukuna interactive animations.',
     liveUrl: 'https://jitinsain.vercel.app',
-    tags: ['Vite', 'Three.js', 'Sukuna FX', 'Vercel']
+    tags: ['Vite', 'Three.js', 'WebGL 3D', 'Sukuna FX', 'Vercel']
   },
   'portfolio-': {
     title: 'Cyber 3D Portfolio (Live)',
