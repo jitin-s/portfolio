@@ -22,3 +22,23 @@ export const passiveOption = (() => {
   } catch (e) {}
   return supportsPassive ? { passive: true } : false;
 })();
+
+// Filter Tablist Keyboard Arrow Navigation
+export function initFilterTabA11y() {
+  const tabs = Array.from(document.querySelectorAll('.filter-tab[role="tab"]'));
+  tabs.forEach((tab, idx) => {
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        const next = tabs[(idx + 1) % tabs.length];
+        next.focus();
+        next.click();
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prev = tabs[(idx - 1 + tabs.length) % tabs.length];
+        prev.focus();
+        prev.click();
+      }
+    });
+  });
+}
