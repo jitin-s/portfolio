@@ -2833,3 +2833,8 @@ footer {
 .project-card:hover, .tilt-card:hover {
   border-color: rgba(0, 240, 255, 0.45);
 }
+
+.filter-tab:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
