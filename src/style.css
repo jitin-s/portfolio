@@ -2857,3 +2857,7 @@ footer {
 .tilt-card:hover::before {
   opacity: 1;
 }
+
+.tilt-card {
+  will-change: transform, box-shadow;
+}
