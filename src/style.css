@@ -2844,3 +2844,16 @@ footer {
   perspective: 1200px;
   transform-style: preserve-3d;
 }
+
+.tilt-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.tilt-card:hover::before {
+  opacity: 1;
+}
