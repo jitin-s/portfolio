@@ -2838,3 +2838,9 @@ footer {
   outline: 2px solid var(--accent-cyan);
   outline-offset: 2px;
 }
+
+/* 3D Perspective Grid Tuning */
+.projects-grid {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
