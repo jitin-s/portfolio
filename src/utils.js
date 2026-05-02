@@ -42,3 +42,16 @@ export function initFilterTabA11y() {
     });
   });
 }
+
+// Instant Search Clear Helper
+export function setupSearchClear(inputId) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      input.value = '';
+      input.dispatchEvent(new Event('input'));
+      input.blur();
+    }
+  });
+}
