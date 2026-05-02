@@ -2861,3 +2861,8 @@ footer {
 .tilt-card {
   will-change: transform, box-shadow;
 }
+
+.search-input:focus {
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+  border-color: var(--accent-cyan);
+}
