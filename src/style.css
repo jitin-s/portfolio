@@ -2866,3 +2866,14 @@ footer {
   box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
   border-color: var(--accent-cyan);
 }
+
+/* Skill Progress Fill Shimmer Animation */
+.skill-progress-fill {
+  background: linear-gradient(90deg, #00f0ff 0%, #a855f7 50%, #00f0ff 100%);
+  background-size: 200% 100%;
+  animation: skillShimmer 4s linear infinite;
+}
+@keyframes skillShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
