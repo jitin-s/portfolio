@@ -2889,3 +2889,9 @@ footer {
   border-radius: 8px;
   font-size: 18px;
 }
+
+.skill-info .level {
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
