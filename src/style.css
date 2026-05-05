@@ -2877,3 +2877,15 @@ footer {
   0% { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
+
+.skill-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  border-radius: 8px;
+  font-size: 18px;
+}
