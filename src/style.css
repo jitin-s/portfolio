@@ -2904,3 +2904,12 @@ footer {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.timeline-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent-purple);
+  letter-spacing: var(--tracking-wide);
+  margin-bottom: 6px;
+}
