@@ -2918,3 +2918,12 @@ footer {
   background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-purple) 60%, transparent 100%);
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
 }
+
+.timeline-dot {
+  box-shadow: 0 0 0 4px rgba(0, 240, 255, 0.2), 0 0 15px rgba(0, 240, 255, 0.6);
+  animation: pulseDot 3s infinite ease-in-out;
+}
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); box-shadow: 0 0 0 8px rgba(0, 240, 255, 0.25), 0 0 20px rgba(0, 240, 255, 0.8); }
+}
