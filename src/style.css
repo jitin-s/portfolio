@@ -2913,3 +2913,8 @@ footer {
   letter-spacing: var(--tracking-wide);
   margin-bottom: 6px;
 }
+
+.timeline-line {
+  background: linear-gradient(180deg, var(--accent-cyan) 0%, var(--accent-purple) 60%, transparent 100%);
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+}
