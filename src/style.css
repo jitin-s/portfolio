@@ -2944,3 +2944,8 @@ footer {
 .terminal-wrapper {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 240, 255, 0.15);
 }
+
+.term-prompt {
+  color: var(--accent-magenta);
+  font-weight: 700;
+}
