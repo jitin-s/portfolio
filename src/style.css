@@ -2935,3 +2935,8 @@ footer {
   transform: translateX(6px);
   border-color: rgba(0, 240, 255, 0.4);
 }
+
+.term-dot {
+  box-shadow: 0 0 6px currentColor;
+  opacity: 0.9;
+}
