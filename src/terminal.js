@@ -123,11 +123,13 @@ export class InteractiveTerminal {
         this.executeCommand(val);
         this.input.value = '';
       } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
         if (this.history.length > 0 && this.historyIndex > 0) {
           this.historyIndex--;
           this.input.value = this.history[this.historyIndex];
         }
       } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
         if (this.historyIndex < this.history.length - 1) {
           this.historyIndex++;
           this.input.value = this.history[this.historyIndex];
