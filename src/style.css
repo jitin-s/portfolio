@@ -2958,3 +2958,12 @@ footer {
 .form-input:valid:not(:placeholder-shown) {
   border-color: rgba(34, 197, 94, 0.5);
 }
+
+.btn-submit {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s var(--ease-spring-snap), box-shadow 0.2s ease;
+}
+.btn-submit:hover {
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+}
