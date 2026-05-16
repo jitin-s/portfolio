@@ -2949,3 +2949,8 @@ footer {
   color: var(--accent-magenta);
   font-weight: 700;
 }
+
+.form-input:focus, .form-textarea:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
