@@ -55,3 +55,9 @@ export function setupSearchClear(inputId) {
     }
   });
 }
+
+// RFC 5322 Compliant Client-side Email Validator
+export function isValidEmail(email) {
+  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return re.test(String(email).toLowerCase().trim());
+}
