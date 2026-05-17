@@ -61,3 +61,10 @@ export function isValidEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(String(email).toLowerCase().trim());
 }
+
+export function validateContactForm(name, email, message) {
+  if (!name || name.trim().length < 2) return { valid: false, message: 'Please provide coordinates/name (minimum 2 characters).' };
+  if (!isValidEmail(email)) return { valid: false, message: 'Please provide a valid return frequency / email.' };
+  if (!message || message.trim().length < 5) return { valid: false, message: 'Transmission payload must be at least 5 characters.' };
+  return { valid: true };
+}
