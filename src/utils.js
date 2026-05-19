@@ -68,3 +68,14 @@ export function validateContactForm(name, email, message) {
   if (!message || message.trim().length < 5) return { valid: false, message: 'Transmission payload must be at least 5 characters.' };
   return { valid: true };
 }
+
+// Rate Limiting Debounce Guard
+export function createRateLimiter(cooldownMs = 3000) {
+  let lastTrigger = 0;
+  return function canTrigger() {
+    const now = Date.now();
+    if (now - lastTrigger < cooldownMs) return false;
+    lastTrigger = now;
+    return true;
+  };
+}
