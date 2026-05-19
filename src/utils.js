@@ -79,3 +79,10 @@ export function createRateLimiter(cooldownMs = 3000) {
     return true;
   };
 }
+
+export function resetFormWithDelay(formElement, statusElement, delayMs = 6000) {
+  if (formElement) formElement.reset();
+  setTimeout(() => {
+    if (statusElement) statusElement.textContent = '';
+  }, delayMs);
+}
