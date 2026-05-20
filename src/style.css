@@ -2988,3 +2988,11 @@ footer {
   color: #030305 !important;
   border-color: #22c55e !important;
 }
+
+.channel-item {
+  transition: transform 0.2s var(--ease-spring-snap), border-color 0.2s ease;
+}
+.channel-item:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 240, 255, 0.4);
+}
