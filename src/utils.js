@@ -86,3 +86,27 @@ export function resetFormWithDelay(formElement, statusElement, delayMs = 6000) {
     if (statusElement) statusElement.textContent = '';
   }, delayMs);
 }
+
+// Modern Clipboard API with Fallback
+export async function copyToClipboard(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (err) {}
+  }
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  textarea.style.position = 'fixed';
+  textarea.style.left = '-9999px';
+  document.body.appendChild(textarea);
+  textarea.select();
+  try {
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+    return true;
+  } catch (err) {
+    document.body.removeChild(textarea);
+    return false;
+  }
+}
