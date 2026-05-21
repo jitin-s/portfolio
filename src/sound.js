@@ -3,6 +3,7 @@ class SoundEngine {
   constructor() {
     this.ctx = null;
     this.muted = false;
+    try { const saved = localStorage.getItem('sound_muted'); if (saved !== null) this.muted = JSON.parse(saved); } catch(e){}
     this.initialized = false;
   }
 
