@@ -25,6 +25,7 @@ class SoundEngine {
 
   toggle() {
     this.muted = !this.muted;
+    try { localStorage.setItem('sound_muted', JSON.stringify(this.muted)); } catch(e){}
     return !this.muted;
   }
 
