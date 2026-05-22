@@ -384,6 +384,8 @@ export class CyberCommandPalette {
     this.overlay.classList.remove('active');
     this.overlay.setAttribute('aria-hidden', 'true');
     sound.playClick();
+    const trigger = document.getElementById('btn-open-palette');
+    if (trigger) trigger.focus();
   }
 
   toggle() {
