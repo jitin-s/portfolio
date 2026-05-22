@@ -134,3 +134,24 @@ export function setupEscapeDismiss(dismissCallbacks = []) {
     }
   });
 }
+
+// Focus Trap for Accessible Dialogs
+export function trapFocus(containerEl) {
+  if (!containerEl) return () => {};
+  const focusable = containerEl.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  if (!focusable.length) return () => {};
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  function handleTab(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+  containerEl.addEventListener('keydown', handleTab);
+  return () => containerEl.removeEventListener('keydown', handleTab);
+}
