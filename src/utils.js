@@ -125,3 +125,12 @@ export const safeStorage = {
     } catch (e) {}
   }
 };
+
+// Global Escape Key Listener for Modals & Overlays
+export function setupEscapeDismiss(dismissCallbacks = []) {
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dismissCallbacks.forEach(cb => typeof cb === 'function' && cb());
+    }
+  });
+}
