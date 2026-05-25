@@ -2996,3 +2996,17 @@ footer {
   transform: translateY(-2px);
   border-color: rgba(0, 240, 255, 0.4);
 }
+
+/* Responsive Layout Tuning: Compact Mobile (< 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+  .hero-badge-row {
+    gap: 6px;
+  }
+  .vibe-pill {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
