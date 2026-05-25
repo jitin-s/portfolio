@@ -3021,3 +3021,13 @@ footer {
     justify-content: center;
   }
 }
+
+@media (max-width: 380px) {
+  .mobile-bottom-dock {
+    padding-left: 6px;
+    padding-right: 6px;
+  }
+  .dock-item {
+    font-size: 10px;
+  }
+}
