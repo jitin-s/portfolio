@@ -3010,3 +3010,14 @@ footer {
     padding: 3px 8px;
   }
 }
+
+@media (max-width: 480px) {
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-cta-group a {
+    width: 100%;
+    justify-content: center;
+  }
+}
