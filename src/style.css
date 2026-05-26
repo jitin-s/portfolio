@@ -3031,3 +3031,13 @@ footer {
     font-size: 10px;
   }
 }
+
+/* Tablet 2-Column Responsive Layout */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
