@@ -3041,3 +3041,10 @@ footer {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* Widescreen 4K Max Width Constraint */
+.app-container {
+  max-width: 1560px;
+  margin-left: auto;
+  margin-right: auto;
+}
