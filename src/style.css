@@ -3061,3 +3061,10 @@ footer {
     animation: none !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .page-view {
+    transition: opacity 0.15s ease !important;
+    transform: none !important;
+  }
+}
