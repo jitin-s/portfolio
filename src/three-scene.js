@@ -220,6 +220,11 @@ export class Cyber3DScene {
   }
 
   animate() {
+    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      this.renderer.render(this.scene, this.camera);
+      return;
+    }
     requestAnimationFrame(() => this.animate());
 
     const elapsedTime = this.clock.getElapsedTime();
