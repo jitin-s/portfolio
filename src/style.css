@@ -3078,3 +3078,21 @@ footer {
     border-bottom: 3px solid CanvasText !important;
   }
 }
+
+/* Resume-Friendly Print Styles */
+@media print {
+  #webgl-container, #sukuna-ambient-bg, .top-ticker, .mobile-bottom-dock, .nav-actions, #mouse-spotlight, .grain-overlay {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .hero-title, .section-title {
+    color: #000000 !important;
+    text-shadow: none !important;
+  }
+  .app-container {
+    padding: 0 !important;
+  }
+}
