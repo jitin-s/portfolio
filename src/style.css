@@ -3068,3 +3068,13 @@ footer {
     transform: none !important;
   }
 }
+
+/* Forced Colors and High Contrast Mode */
+@media (forced-colors: active), (prefers-contrast: high) {
+  .project-card, .tilt-card, .skill-category-card, .contact-card, .timeline-content {
+    border: 2px solid CanvasText !important;
+  }
+  .nav-link.active {
+    border-bottom: 3px solid CanvasText !important;
+  }
+}
