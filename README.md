@@ -1,3 +1,7 @@
+# ⚡ Jitin Sain — Full Stack & AI Systems Architect Portfolio
+
+[![Vite](https://img.shields.io/badge/Vite-6.2.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/) [![Three.js](https://img.shields.io/badge/Three.js-0.180.0-black?style=for-the-badge&logo=three.js&logoColor=white)](https://threejs.org/) [![JavaScript](https://img.shields.io/badge/JavaScript-ES2024-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/) [![Vercel](https://img.shields.io/badge/Deployed-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/) [![WCAG AA](https://img.shields.io/badge/Accessibility-WCAG%20AA-00f0ff?style=for-the-badge)](https://www.w3.org/WAI/WCAG21/AA/)
+
 ## ⚡ Jitin Sain — 3D Cyber Portfolio
 
 > Fully animated, ultra-responsive Dark & Grey 3D WebGL Portfolio with interactive Three.js cyber terrain, gyroscopic core, 3D card physics, cyber terminal simulator, and synthesizer audio feedback.
