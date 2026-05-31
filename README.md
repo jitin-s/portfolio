@@ -74,3 +74,32 @@ Follow the simple prompts (select default settings: framework `Vite`, build comm
    git push -u origin main
    ```
 2. Go to [vercel.com/new](https://vercel.com/new), select your repo, and click **Deploy**! Vercel will automatically build and publish it live on a fast global edge network.
+
+
+---
+
+### ⌨️ Neural Directives & Keyboard Controls
+
+| Shortcut | Action | Description |
+| :--- | :--- | :--- |
+| `⌘K` / `Ctrl+K` | Open Directives | Interactive command palette modal |
+| `Esc` | Close HUD | Dismiss active palettes, modals, or terminal focus |
+| `Tab` / `Shift+Tab` | Accessible Focus | Navigate interactive targets with high-visibility neon ring |
+| `Arrow Keys` | Filter Tabs | Fast category filter cycling across project vault |
+
+### 🏛️ Repository Architecture
+
+```text
+portfolio/
+├── index.html          # Semantic HTML5, WCAG AA landmark hierarchy, SEO JSON-LD
+├── vercel.json         # Security headers, cache policies, edge configuration
+├── src/
+│   ├── main.js         # Application bootstrap & event coordination
+│   ├── style.css       # Design tokens, fluid typography, 3D WebGL styling
+│   ├── utils.js        # A11y helpers, smooth-scroll, email validation, safeStorage
+│   ├── three-scene.js  # 3D undulating terrain, gyroscopic core WebGL engine
+│   ├── github.js       # GitHub API v3 live polling with resilient fallbacks
+│   ├── terminal.js     # Cyber CLI HUD with sound synthesis & command dispatcher
+│   ├── router.js       # Lightweight hash-based client-side SPA routing
+│   └── sound.js        # Web Audio API futuristic synthesizer engine
+```
