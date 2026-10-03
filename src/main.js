@@ -5,12 +5,16 @@ import { InteractiveTerminal } from './terminal.js';
 import { AppRouter } from './router.js';
 import { animeFX } from './anime-effects.js';
 import { SukunaCharacterEngine } from './sukuna-character.js';
+import { AnimeCycleEngine } from './anime-cycle.js';
 import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData } from './github.js';
 import confetti from 'canvas-confetti';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
+
+  // 2. Initialize 20-Second Autonomous Anime Manifestation Cycle
+  const animeCycle = new AnimeCycleEngine({ intervalMs: 20000 });
 
   // 2. Initialize Sukuna Frameless Animated Character Engine (if present)
   let sukunaEngine = null;
