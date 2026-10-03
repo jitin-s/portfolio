@@ -158,44 +158,82 @@
             </div>
           </div>
 
-          <!-- Ryomen Sukuna Alive Anime Character Stage (Frameless Animation) -->
+          <!-- Ryomen Sukuna Anime Holographic Showcase Frame -->
           <div id="sukuna-stage" class="sukuna-stage">
-            <!-- Dynamic Cursed Fire Particle Canvas behind Sukuna -->
+            <!-- Dynamic Cursed Fire Particle Canvas behind frame -->
             <canvas id="sukuna-fire-canvas" class="sukuna-fire-canvas"></canvas>
 
-            <div class="sukuna-character-wrap">
+            <!-- Holographic Cyber Cursed Frame -->
+            <div class="sukuna-cyber-frame">
+              <!-- Cyber HUD Corner Brackets -->
+              <div class="frame-corner top-left"></div>
+              <div class="frame-corner top-right"></div>
+              <div class="frame-corner bottom-left"></div>
+              <div class="frame-corner bottom-right"></div>
+
+              <!-- Top HUD Metadata Header -->
+              <div class="frame-hud-header">
+                <div class="hud-character-meta">
+                  <span class="hud-status-indicator"></span>
+                  <div>
+                    <div class="hud-character-name">RYOMEN SUKUNA</div>
+                    <div class="hud-character-sub">KING OF CURSES • SPECIAL GRADE</div>
+                  </div>
+                </div>
+                <div id="sukuna-technique-badge" class="sukuna-technique-badge">⛩️ DOMAIN EXPANSION</div>
+              </div>
+
+              <!-- Cursed Energy Meter Bar -->
+              <div class="cursed-energy-bar-wrap">
+                <div class="cursed-energy-label">
+                  <span>CURSED ENERGY OUTPUT</span>
+                  <span class="cursed-energy-val">99.9%</span>
+                </div>
+                <div class="cursed-energy-track">
+                  <div class="cursed-energy-fill"></div>
+                </div>
+              </div>
+
               <!-- Interactive Manga Speech Bubble -->
               <div class="sukuna-speech-bubble" title="Click to trigger attack dialogue">
                 <span>🩸</span>
                 <span class="sukuna-speech-text">"Domain Expansion: Malevolent Shrine!"</span>
               </div>
 
-              <!-- Active Technique Badge -->
-              <div id="sukuna-technique-badge" class="sukuna-technique-badge">⛩️ DOMAIN EXPANSION</div>
+              <!-- Media Viewport Frame with Sukuna Animated GIF -->
+              <div class="sukuna-media-viewport" title="Click Sukuna to unleash attack!">
+                <!-- Cleave Laser Slash Sweep -->
+                <div class="cleave-laser-slash"></div>
 
-              <!-- Orbiting Cursed Cleave Blades -->
-              <div class="cleave-orbit-ring ring-1"></div>
-              <div class="cleave-orbit-ring ring-2"></div>
+                <!-- Orbiting Cursed Cleave Blades -->
+                <div class="cleave-orbit-ring ring-1"></div>
+                <div class="cleave-orbit-ring ring-2"></div>
 
-              <!-- Sukuna Character Animated Media (Soft Masked, No Box) -->
-              <div class="sukuna-cutout-container" title="Click Sukuna to cycle technique!">
+                <!-- Moving Anime GIF -->
                 <img id="sukuna-anime-media" src="/sukuna.gif" alt="Ryomen Sukuna Moving Anime Animation" class="sukuna-anime-media" />
               </div>
 
-              <!-- Quick Technique Trigger Pills -->
-              <div class="sukuna-trigger-row">
-                <button class="sukuna-action-pill domain" data-tech="domain">
-                  <span>⛩️ DOMAIN</span>
-                </button>
-                <button class="sukuna-action-pill" data-tech="battle">
-                  <span>⚔️ DISMANTLE</span>
-                </button>
-                <button class="sukuna-action-pill smirk" data-tech="smile">
-                  <span>😈 SMIRK</span>
-                </button>
-                <button class="sukuna-action-pill flame" data-tech="flame">
-                  <span>🔥 FŪGA</span>
-                </button>
+              <!-- Frame Bottom Deck with Responsive Action Buttons -->
+              <div class="frame-deck-footer">
+                <div class="deck-label">// SELECT CURSED TECHNIQUE:</div>
+                <div class="sukuna-trigger-row">
+                  <button class="sukuna-action-pill domain active" data-tech="domain">
+                    <span class="pill-icon">⛩️</span>
+                    <span>DOMAIN</span>
+                  </button>
+                  <button class="sukuna-action-pill" data-tech="battle">
+                    <span class="pill-icon">⚔️</span>
+                    <span>DISMANTLE</span>
+                  </button>
+                  <button class="sukuna-action-pill smirk" data-tech="smile">
+                    <span class="pill-icon">😈</span>
+                    <span>SMIRK</span>
+                  </button>
+                  <button class="sukuna-action-pill flame" data-tech="flame">
+                    <span class="pill-icon">🔥</span>
+                    <span>FŪGA</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

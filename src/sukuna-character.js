@@ -1,5 +1,5 @@
 // Ryomen Sukuna Alive Anime Character Engine
-// Supports dynamic animated GIF/video switching, cursed energy aura, and anime attacks
+// Supports dynamic animated GIF/video switching, cursed cyber frame, and anime attacks
 import { sound } from './sound.js';
 import { animeFX } from './anime-effects.js';
 import confetti from 'canvas-confetti';
@@ -9,11 +9,13 @@ export class SukunaCharacterEngine {
     this.container = document.getElementById(containerId);
     if (!this.container) return;
 
-    this.characterWrap = this.container.querySelector('.sukuna-character-wrap');
+    this.characterWrap = this.container.querySelector('.sukuna-cyber-frame') || this.container.querySelector('.sukuna-character-wrap');
+    this.mediaViewport = this.container.querySelector('.sukuna-media-viewport');
     this.mediaImg = this.container.querySelector('#sukuna-anime-media');
     this.speechBubble = this.container.querySelector('.sukuna-speech-bubble');
     this.speechText = this.container.querySelector('.sukuna-speech-text');
     this.techniqueBadge = this.container.querySelector('#sukuna-technique-badge');
+    this.energyFill = this.container.querySelector('.cursed-energy-fill');
     this.canvas = this.container.querySelector('#sukuna-fire-canvas');
 
     if (this.canvas) {
@@ -102,13 +104,36 @@ export class SukunaCharacterEngine {
 
     // Smoothly swap animated media
     if (this.mediaImg) {
-      this.mediaImg.style.opacity = '0.4';
-      this.mediaImg.style.transform = 'scale(0.96)';
+      this.mediaImg.style.opacity = '0.3';
+      this.mediaImg.style.transform = 'scale(0.97)';
       setTimeout(() => {
         this.mediaImg.src = tech.src;
         this.mediaImg.style.opacity = '1';
         this.mediaImg.style.transform = 'scale(1)';
-      }, 150);
+      }, 140);
+    }
+
+    // Update active technique button state
+    const buttons = this.container.querySelectorAll('.sukuna-action-pill');
+    buttons.forEach((btn) => {
+      if (btn.dataset.tech === techniqueKey) {
+        btn.classList.add('active');
+        btn.style.borderColor = tech.color;
+        btn.style.boxShadow = `0 0 16px ${tech.color}`;
+      } else {
+        btn.classList.remove('active');
+        btn.style.borderColor = '';
+        btn.style.boxShadow = '';
+      }
+    });
+
+    // Surge Cursed Energy Meter
+    if (this.energyFill) {
+      this.energyFill.style.boxShadow = `0 0 18px ${tech.color}`;
+      this.energyFill.style.width = '100%';
+      setTimeout(() => {
+        if (this.energyFill) this.energyFill.style.width = '96%';
+      }, 400);
     }
 
     // Update technique badge
@@ -116,6 +141,7 @@ export class SukunaCharacterEngine {
       this.techniqueBadge.innerText = tech.badge;
       this.techniqueBadge.style.color = tech.color;
       this.techniqueBadge.style.borderColor = tech.color;
+      this.techniqueBadge.style.boxShadow = `0 0 16px ${tech.color}44`;
     }
 
     // Update speech bubble quote
@@ -123,7 +149,7 @@ export class SukunaCharacterEngine {
     if (this.speechText) {
       this.speechText.innerText = tech.quotes[this.quoteIndex];
       this.speechBubble?.classList.add('pop');
-      setTimeout(() => this.speechBubble?.classList.remove('pop'), 400);
+      setTimeout(() => this.speechBubble?.classList.remove('pop'), 350);
     }
 
     // Trigger visual anime FX
@@ -142,8 +168,8 @@ export class SukunaCharacterEngine {
 
     // Celebration burst
     confetti({
-      particleCount: 80,
-      spread: 75,
+      particleCount: 75,
+      spread: 70,
       origin: { x: 0.75, y: 0.45 },
       colors: [tech.color, '#ffffff', '#111111']
     });
@@ -157,9 +183,12 @@ export class SukunaCharacterEngine {
   }
 
   bindEvents() {
-    // 3D Mouse Parallax Tracking
+    // 3D Mouse Parallax Tracking on Cyber Frame
     window.addEventListener('mousemove', (e) => {
       if (!this.characterWrap) return;
+      // Disable 3D tilt on touch screens or small mobile screens for stability
+      if (window.innerWidth < 768) return;
+
       const rect = this.container.getBoundingClientRect();
       const centerX = rect.left + rect.width / 2;
       const centerY = rect.top + rect.height / 2;
@@ -168,20 +197,20 @@ export class SukunaCharacterEngine {
       const deltaY = (e.clientY - centerY) / (window.innerHeight / 2);
 
       this.characterWrap.style.transform = `
-        perspective(1000px)
-        rotateY(${deltaX * 12}deg)
-        rotateX(${-deltaY * 8}deg)
+        perspective(1200px)
+        rotateY(${deltaX * 10}deg)
+        rotateX(${-deltaY * 7}deg)
       `;
     });
 
     window.addEventListener('mouseleave', () => {
       if (!this.characterWrap) return;
-      this.characterWrap.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg)';
+      this.characterWrap.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg)';
     });
 
-    // Clicking character directly cycles techniques and triggers attack
-    if (this.characterWrap) {
-      this.characterWrap.addEventListener('click', () => {
+    // Clicking media viewport triggers technique cycle
+    if (this.mediaViewport) {
+      this.mediaViewport.addEventListener('click', () => {
         this.cycleNextTechnique();
       });
     }
@@ -201,7 +230,7 @@ export class SukunaCharacterEngine {
     if (!this.ctx || !this.canvas) return;
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Billowing Cursed Flames
+    // Billowing Cursed Flames behind frame
     for (let p of this.particles) {
       p.y -= p.speedY;
       p.x += p.speedX;
@@ -212,9 +241,9 @@ export class SukunaCharacterEngine {
       }
 
       this.ctx.save();
-      this.ctx.globalAlpha = p.life * 0.8;
+      this.ctx.globalAlpha = p.life * 0.75;
       this.ctx.fillStyle = p.color;
-      this.ctx.shadowBlur = 16;
+      this.ctx.shadowBlur = 14;
       this.ctx.shadowColor = p.color;
 
       this.ctx.beginPath();
