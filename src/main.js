@@ -12,16 +12,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
 
-  // 2. Initialize Sukuna Frameless Animated Character Engine
-  const sukunaEngine = new SukunaCharacterEngine('sukuna-stage');
+  // 2. Initialize Sukuna Frameless Animated Character Engine (if present)
+  let sukunaEngine = null;
+  if (document.getElementById('sukuna-stage')) {
+    sukunaEngine = new SukunaCharacterEngine('sukuna-stage');
+  }
 
-  // Sukuna Technique Trigger Buttons
+  // Sukuna Technique Trigger Buttons (if present)
   const sukunaTechBtns = document.querySelectorAll('.sukuna-action-pill[data-tech]');
   sukunaTechBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
       const tech = btn.dataset.tech;
-      sukunaEngine.setTechnique(tech);
+      sukunaEngine?.setTechnique?.(tech);
     });
   });
 
