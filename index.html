@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jitin Sain — Full Stack & AI Systems Architect</title>
+  <meta name="description" content="Portfolio of Jitin Sain: AI Systems Developer, Full Stack Engineer, and Builder of National-scale AI platforms and resilient architectures." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E" />
+</head>
+<body>
+  <!-- 3D Three.js WebGL Canvas Layer -->
+  <div id="webgl-container"></div>
+
+  <!-- Dynamic Ambient Mouse Spotlight -->
+  <div id="mouse-spotlight"></div>
+
+  <!-- Film Grain Overlay -->
+  <div class="grain-overlay"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <a href="#hero" class="brand">
+      <div class="brand-hex">JS</div>
+      <div>
+        <div class="brand-text">Jitin Sain</div>
+      </div>
+      <span class="brand-tag">v2.6</span>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#skills" class="nav-link">Arsenal</a></li>
+        <li><a href="#timeline" class="nav-link">Trajectory</a></li>
+        <li><a href="#terminal" class="nav-link">Terminal</a></li>
+        <li><a href="#contact" class="nav-link">Transmission</a></li>
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Cyber Sound Effects">
+        <span id="sound-indicator" class="sound-indicator"></span>
+        <span id="sound-text">SOUND: ON</span>
+      </button>
+
+      <a href="https://github.com/jitin-s" target="_blank" rel="noopener noreferrer" class="btn-github">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="cyber-grid"></div>
+      <div class="hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-row">
+            <div class="status-chip">
+              <span class="status-pulse"></span>
+              <span>AVAILABLE FOR OPPORTUNITIES</span>
+            </div>
+            <span class="badge-tag">AI & SYSTEMS</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="scramble-text" data-text="JITIN SAIN">JITIN SAIN</span>
+          </h1>
+
+          <div class="hero-subtitle">
+            <span>Full Stack Engineer & AI Systems Developer</span>
+          </div>
+
+          <p class="hero-desc">
+            Architecting national-scale emergency AI intelligence platforms, autonomous security sentinels, offline transaction protocols, and high-concurrency web systems.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn-primary">
+              <span>EXPLORE DEPLOYMENTS</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#terminal" class="btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              <span>ACCESS TERMINAL</span>
+            </a>
+            <a href="#contact" class="btn-secondary">
+              <span>TRANSMIT SIGNAL</span>
+            </a>
+          </div>
+
+          <div class="hero-metrics">
+            <div class="metric-item">
+              <div class="metric-value" data-target="11">11+</div>
+              <div class="metric-label">Repositories</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value" data-target="6">6+</div>
+              <div class="metric-label">Live Deployments</div>
+            </div>
+            <div class="metric-item">
+              <div class="metric-value" data-target="100">100%</div>
+              <div class="metric-label">Modern Stack</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 3D HUD Card -->
+        <div class="hero-hud-card tilt-card">
+          <div class="card-glare"></div>
+          <div class="hud-header">
+            <div class="hud-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              <span>OPERATOR STATUS: VERIFIED</span>
+            </div>
+            <span class="hud-badge">ONLINE</span>
+          </div>
+
+          <div class="hud-avatar-box">
+            <img src="https://avatars.githubusercontent.com/u/96179621?v=4" alt="Jitin Sain Avatar" class="hud-avatar" />
+            <div class="hud-user-info">
+              <h3>Jitin Sain</h3>
+              <p>@jitin-s • System Architect</p>
+            </div>
+          </div>
+
+          <div class="hud-specs-list">
+            <div class="hud-spec-row">
+              <span class="spec-key">CORE DIRECTIVE</span>
+              <span class="spec-val">AI & High-Performance Web</span>
+            </div>
+            <div class="hud-spec-row">
+              <span class="spec-key">SPECIALIZATION</span>
+              <span class="spec-val">Predictive AI, Interoperability, P2P</span>
+            </div>
+            <div class="hud-spec-row">
+              <span class="spec-key">VERCEL DEPLOYMENTS</span>
+              <span class="spec-val">Active (6+ Live Domains)</span>
+            </div>
+            <div class="hud-spec-row">
+              <span class="spec-key">LATENCY TOLERANCE</span>
+              <span class="spec-val">&lt; 15ms Edge Optimization</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SHOWCASE -->
+    <section id="projects">
+      <div class="section-header">
+        <div class="section-tag">ARCHITECTURES & PRODUCTION</div>
+        <h2 class="section-title scramble-text" data-text="Featured Deployments">Featured Deployments</h2>
+        <p class="section-desc">
+          Engineered for mission-critical reliability, machine intelligence, and ultra-fluid user interfaces.
+        </p>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-filter="all">All Systems</button>
+        <button class="filter-tab" data-filter="ai">AI & Predictive</button>
+        <button class="filter-tab" data-filter="web">Full Stack Web</button>
+        <button class="filter-tab" data-filter="security">Security & Protocols</button>
+        <button class="filter-tab" data-filter="mobile">Mobile & Edge</button>
+      </div>
+
+      <!-- 3D Projects Grid -->
+      <div class="projects-grid">
+        <!-- Project 1: DisasterLens -->
+        <div class="tilt-card project-card" data-category="ai">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">⚡</div>
+              <span class="project-category-badge">AI Intelligence</span>
+            </div>
+            <h3 class="project-title">DisasterLens</h3>
+            <p class="project-desc">
+              National AI Multi-Hazard Predictive Intelligence & Real-Time Emergency Command Portal designed for early-warning geo-analytics and crisis mitigation.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Streamlit</span>
+              <span class="tech-tag">Predictive AI</span>
+              <span class="tech-tag">Geospatial</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://disasterlenss.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Live Console</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/DisasterLens" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 2: SetuX & SetuXAI Bot -->
+        <div class="tilt-card project-card" data-category="ai">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">🧠</div>
+              <span class="project-category-badge">Agentic AI</span>
+            </div>
+            <h3 class="project-title">SetuX & SetuXAI Bot</h3>
+            <p class="project-desc">
+              Secure interoperability layer connecting enterprise legacy systems with intelligent autonomous conversational agents and API middleware.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">LLM Agents</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://setuxai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Live Portal</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/SetuXAI_Bot" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 3: Agniveer-Sentinel -->
+        <div class="tilt-card project-card" data-category="security">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">🛡️</div>
+              <span class="project-category-badge">Cyber Defense</span>
+            </div>
+            <h3 class="project-title">Agniveer-Sentinel</h3>
+            <p class="project-desc">
+              Autonomous Guard Network for Intelligent Vigilance, Electronic Environment Response — System for Electronic Network Threat Identification & Neutralization.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Threat Detection</span>
+              <span class="tech-tag">Network Security</span>
+              <span class="tech-tag">MIT</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jitin-s/Agniveer-Sentinel" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>View Architecture</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/Agniveer-Sentinel" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 4: ngl Anonymous Platform -->
+        <div class="tilt-card project-card" data-category="web">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">💬</div>
+              <span class="project-category-badge">Full Stack</span>
+            </div>
+            <h3 class="project-title">ngl — Anonymous Social Feed</h3>
+            <p class="project-desc">
+              High-throughput interactive anonymous feedback and social messaging platform built with modern TypeScript and responsive UX.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">TypeScript</span>
+              <span class="tech-tag">Tailwind</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://ngl-jitin-io.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Live Web App</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/ngl" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 5: MuscleHut -->
+        <div class="tilt-card project-card" data-category="web">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">🏋️</div>
+              <span class="project-category-badge">Web Application</span>
+            </div>
+            <h3 class="project-title">MuscleHut</h3>
+            <p class="project-desc">
+              Sleek, responsive digital gym and fitness hub featuring workout scheduling, tier memberships, and performance tracking interfaces.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://musclehut-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Live Portal</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/MuscleHut" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 6: Payments Without Internet -->
+        <div class="tilt-card project-card" data-category="security">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">📶</div>
+              <span class="project-category-badge">Protocol / Crypto</span>
+            </div>
+            <h3 class="project-title">Flowpay — Offline Transactions</h3>
+            <p class="project-desc">
+              Encrypted, decentralized payment protocol enabling verified peer-to-peer financial settlements in zero-connectivity environments.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Cryptography</span>
+              <span class="tech-tag">Mesh P2P</span>
+              <span class="tech-tag">Offline Sync</span>
+              <span class="tech-tag">Apache-2.0</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jitin-s/Payments-Without-Internet" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Protocol Specs</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/Payments-Without-Internet" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 7: TapSOS -->
+        <div class="tilt-card project-card" data-category="mobile">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">🚨</div>
+              <span class="project-category-badge">Mobile / Safety</span>
+            </div>
+            <h3 class="project-title">TapSOS</h3>
+            <p class="project-desc">
+              Tactile, fast-response mobile distress beacon broadcasting instant GPS coordinates and distress signals to emergency contacts.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">GPS Telemetry</span>
+              <span class="tech-tag">Emergency</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/jitin-s/TapSOS" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Mobile Build</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/TapSOS" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Project 8: SmartDealsHub -->
+        <div class="tilt-card project-card" data-category="web">
+          <div class="card-glare"></div>
+          <div>
+            <div class="card-top">
+              <div class="project-icon-box">🛒</div>
+              <span class="project-category-badge">Automation</span>
+            </div>
+            <h3 class="project-title">SmartDealsHub</h3>
+            <p class="project-desc">
+              Real-time e-commerce deal aggregator tracking flash sales, price anomalies, and discounted consumer electronics automatically.
+            </p>
+            <div class="project-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Web Scraping</span>
+              <span class="tech-tag">Automation</span>
+              <span class="tech-tag">Vercel</span>
+            </div>
+          </div>
+          <div class="project-links">
+            <a href="https://smartdealshub.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+              <span>Live App</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <a href="https://github.com/jitin-s/SmartDealsHub" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+              <span>Source</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL ARSENAL / SKILLS GALAXY -->
+    <section id="skills">
+      <div class="section-header">
+        <div class="section-tag">COMPETENCY MATRIX</div>
+        <h2 class="section-title scramble-text" data-text="Technical Arsenal">Technical Arsenal</h2>
+        <p class="section-desc">
+          Core toolkits, programming paradigms, and systems engineering frameworks deployed across production architectures.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Category 1 -->
+        <div class="skill-category-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">🤖</span>
+            <h3 class="skill-title">AI & Data Systems</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Python / PyTorch</span><span class="level">95%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 95%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Predictive AI & Geospatial</span><span class="level">90%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">LLM & Autonomous Agents</span><span class="level">88%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 2 -->
+        <div class="skill-category-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">⚡</span>
+            <h3 class="skill-title">Frontend & WebGL</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">TypeScript / JavaScript</span><span class="level">94%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 94%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">React & Next.js</span><span class="level">92%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Three.js / WebGL / CSS 3D</span><span class="level">86%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 86%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 3 -->
+        <div class="skill-category-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">🌐</span>
+            <h3 class="skill-title">Backend & Protocols</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">FastAPI & Node.js</span><span class="level">90%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 90%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Offline Mesh / P2P</span><span class="level">85%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 85%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">REST & WebSocket APIs</span><span class="level">92%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category 4 -->
+        <div class="skill-category-card">
+          <div class="skill-card-header">
+            <span class="skill-icon">📱</span>
+            <h3 class="skill-title">Mobile & DevOps</h3>
+          </div>
+          <div class="skill-list">
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Flutter & Dart</span><span class="level">88%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Git, CI/CD, Vercel</span><span class="level">96%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 96%;"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="skill-info"><span class="name">Docker & Containerization</span><span class="level">82%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 82%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE TRAJECTORY TIMELINE -->
+    <section id="timeline">
+      <div class="section-header">
+        <div class="section-tag">ENGINEERING MILESTONES</div>
+        <h2 class="section-title scramble-text" data-text="System Trajectory">System Trajectory</h2>
+        <p class="section-desc">Evolution of projects, open-source architectures, and high-impact initiatives.</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">CURRENT • 2026</div>
+            <h4 class="timeline-heading">National Predictive AI & Agentic Interoperability</h4>
+            <p class="timeline-desc">
+              Pioneered <strong>DisasterLens</strong> emergency predictive intelligence portal and engineered <strong>SetuX</strong> secure interoperability protocols connecting distributed enterprise APIs with LLM autonomous bots.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026</div>
+            <h4 class="timeline-heading">Resilient Offline Mesh Protocols & Cyber Defense</h4>
+            <p class="timeline-desc">
+              Engineered <strong>Flowpay</strong> (encrypted offline digital transactions) and <strong>Agniveer-Sentinel</strong> (autonomous threat neutralization framework) for zero-trust environments.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-date">2026</div>
+            <h4 class="timeline-heading">High-Concurrency Web & Mobile Deployments</h4>
+            <p class="timeline-desc">
+              Created <strong>ngl</strong> anonymous social feedback platform and <strong>TapSOS</strong> distress beacon mobile application with real-time geolocation tracking.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE CYBER TERMINAL -->
+    <section id="terminal">
+      <div class="section-header">
+        <div class="section-tag">INTERACTIVE CONSOLE</div>
+        <h2 class="section-title scramble-text" data-text="Core Terminal HUD">Core Terminal HUD</h2>
+        <p class="section-desc">Direct interface to query operator credentials, system repositories, and execute matrix protocols.</p>
+      </div>
+
+      <div id="cyber-terminal" class="terminal-wrapper">
+        <div class="term-topbar">
+          <div class="term-dots">
+            <span class="term-dot red"></span>
+            <span class="term-dot yellow"></span>
+            <span class="term-dot green"></span>
+          </div>
+          <div class="term-title">jitin-core — zsh — 80x24</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: #64748b;">STATUS: READY</div>
+        </div>
+
+        <div class="term-body">
+          <div class="term-output">
+            <div class="term-line">
+              <span class="term-prompt">system@jitin:~$</span>
+              <span class="term-cmd">init-operator-console --verbose</span>
+            </div>
+            <div class="term-res">
+              [INIT] Quantum encryption established.<br/>
+              [INIT] Loaded operator profile: <span class="text-glow">Jitin Sain (@jitin-s)</span>.<br/>
+              Type <span class="text-glow">help</span> to view available system commands.
+            </div>
+          </div>
+
+          <div class="term-input-row">
+            <span class="term-prompt">guest@jitin-core:~$</span>
+            <input type="text" class="term-input" placeholder="type 'help', 'projects', 'skills', or 'matrix'..." autofocus autocomplete="off" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT TRANSMISSION -->
+    <section id="contact">
+      <div class="section-header">
+        <div class="section-tag">TRANSMISSION FREQUENCY</div>
+        <h2 class="section-title scramble-text" data-text="Initiate Uplink">Initiate Uplink</h2>
+        <p class="section-desc">Ready to discuss high-impact roles, engineering contracts, or innovative collaborations.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3 class="contact-info-title">Direct Channels</h3>
+          <p class="contact-info-desc">
+            Connect directly through secure channels or inspect public codebases.
+          </p>
+
+          <div class="contact-channels">
+            <div class="channel-item">
+              <div class="channel-left">
+                <span class="channel-icon">🐙</span>
+                <div>
+                  <div class="channel-name">GitHub</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">github.com/jitin-s</div>
+                </div>
+              </div>
+              <a href="https://github.com/jitin-s" target="_blank" rel="noopener noreferrer" class="channel-btn">VISIT</a>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-left">
+                <span class="channel-icon">⚡</span>
+                <div>
+                  <div class="channel-name">Vercel Deployments</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">6+ Production Sites</div>
+                </div>
+              </div>
+              <a href="https://github.com/jitin-s" target="_blank" rel="noopener noreferrer" class="channel-btn">INSPECT</a>
+            </div>
+
+            <div class="channel-item">
+              <div class="channel-left">
+                <span class="channel-icon">📫</span>
+                <div>
+                  <div class="channel-name">Developer Email</div>
+                  <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-mono);">jitinsain.work@gmail.com</div>
+                </div>
+              </div>
+              <button class="channel-btn" onclick="copyText('jitinsain.work@gmail.com', this)">COPY</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label class="form-label" for="name">COORDINATES / NAME</label>
+              <input type="text" id="name" class="form-input" placeholder="e.g. Alex Vance" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">RETURN FREQUENCY / EMAIL</label>
+              <input type="email" id="email" class="form-input" placeholder="e.g. alex@enterprise.com" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="message">TRANSMISSION PAYLOAD</label>
+              <textarea id="message" class="form-textarea" placeholder="Detail your project or role inquiry..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">DISPATCH MESSAGE</button>
+            <div id="form-status" style="font-family: var(--font-mono); font-size: 12px; margin-top: 6px;"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <div class="brand-hex" style="width: 28px; height: 28px; font-size: 12px;">JS</div>
+          <div class="footer-copy">
+            © <span id="current-year">2026</span> Jitin Sain. Engineered with 3D WebGL, Three.js & Cyber Aesthetics.
+          </div>
+        </div>
+
+        <button id="back-to-top" class="btn-back-to-top" aria-label="Return to top">
+          ↑ RETURN TO SURFACE
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
