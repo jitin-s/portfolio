@@ -102,7 +102,7 @@ export class SukunaCharacterEngine {
     this.currentTechnique = techniqueKey;
     const tech = this.techniques[techniqueKey];
 
-    // Smoothly swap animated media
+    // Smoothly swap animated media in showcase frame
     if (this.mediaImg) {
       this.mediaImg.style.opacity = '0.3';
       this.mediaImg.style.transform = 'scale(0.97)';
@@ -111,6 +111,21 @@ export class SukunaCharacterEngine {
         this.mediaImg.style.opacity = '1';
         this.mediaImg.style.transform = 'scale(1)';
       }, 140);
+    }
+
+    // Sync ambient background extension layer
+    const ambientMedia = document.getElementById('sukuna-ambient-media');
+    const ambientBg = document.getElementById('sukuna-ambient-bg');
+    if (ambientMedia) {
+      ambientMedia.style.opacity = '0.08';
+      setTimeout(() => {
+        ambientMedia.src = tech.src;
+        ambientMedia.style.opacity = '';
+      }, 140);
+    }
+    if (ambientBg) {
+      ambientBg.classList.add('surging');
+      setTimeout(() => ambientBg.classList.remove('surging'), 1000);
     }
 
     // Update active technique button state

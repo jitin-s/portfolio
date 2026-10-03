@@ -11,6 +11,15 @@
   <!-- 3D Three.js WebGL Canvas Layer -->
   <div id="webgl-container"></div>
 
+  <!-- Sukuna Domain Ambient Background Extension -->
+  <div id="sukuna-ambient-bg" class="sukuna-ambient-bg active" aria-hidden="true">
+    <div class="sukuna-ambient-media-wrap">
+      <img id="sukuna-ambient-media" src="/sukuna-domain.gif" alt="Sukuna Domain Ambient Background" class="sukuna-ambient-media" />
+      <div class="sukuna-ambient-lines"></div>
+      <div class="sukuna-ambient-glow"></div>
+    </div>
+  </div>
+
   <!-- Dynamic Ambient Mouse Spotlight -->
   <div id="mouse-spotlight"></div>
 
@@ -51,6 +60,12 @@
     </nav>
 
     <div class="nav-actions">
+      <!-- Sukuna Background Extension Toggle Button -->
+      <button id="bg-extension-toggle" class="btn-bg-toggle active" aria-label="Toggle Sukuna Background Extension" title="Toggle Sukuna Background Extension">
+        <span class="bg-toggle-icon">👁️</span>
+        <span class="bg-toggle-text">SUKUNA BG: ON</span>
+      </button>
+
       <!-- Anime Awakening Aura Toggle Button -->
       <button id="aura-toggle" class="btn-awakening" aria-label="Toggle Anime Awakening Aura">
         <span>⚡ AWAKEN AURA</span>

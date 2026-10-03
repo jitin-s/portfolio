@@ -44,6 +44,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  // 5b. Sukuna Ambient Background Extension Controller & Parallax
+  const bgToggleBtn = document.getElementById('bg-extension-toggle');
+  const ambientBg = document.getElementById('sukuna-ambient-bg');
+  const ambientWrap = document.querySelector('.sukuna-ambient-media-wrap');
+
+  if (bgToggleBtn && ambientBg) {
+    let bgActive = true;
+    bgToggleBtn.addEventListener('click', () => {
+      bgActive = !bgActive;
+      sound.playPowerUp();
+      if (bgActive) {
+        ambientBg.classList.add('active');
+        bgToggleBtn.classList.remove('muted');
+        bgToggleBtn.classList.add('active');
+        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">👁️</span><span class="bg-toggle-text">SUKUNA BG: ON</span>';
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.2 },
+          colors: ['#ff0055', '#a855f7', '#ffffff']
+        });
+      } else {
+        ambientBg.classList.remove('active');
+        bgToggleBtn.classList.remove('active');
+        bgToggleBtn.classList.add('muted');
+        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">🕶️</span><span class="bg-toggle-text">SUKUNA BG: OFF</span>';
+      }
+    });
+  }
+
+  if (ambientWrap && window.innerWidth >= 768) {
+    window.addEventListener('mousemove', (e) => {
+      const deltaX = (e.clientX - window.innerWidth / 2) / (window.innerWidth / 2);
+      const deltaY = (e.clientY - window.innerHeight / 2) / (window.innerHeight / 2);
+      ambientWrap.style.transform = `translate(calc(-50% + ${deltaX * 18}px), calc(-50% + ${deltaY * 14}px))`;
+    });
+  }
+
   // 6. Sound & Anime Aura Toggles
   const auraBtn = document.getElementById('aura-toggle');
   if (auraBtn) {
