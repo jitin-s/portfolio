@@ -129,6 +129,40 @@ export class AnimeEffectsEngine {
     requestAnimationFrame(step);
   }
 
+  // Sukuna's Dismantle & Cleave Slash Barrage Animation
+  triggerDismantleBarrage() {
+    this.triggerScreenShake(500);
+    const count = 10;
+    for (let i = 0; i < count; i++) {
+      setTimeout(() => {
+        const startX = Math.random() * this.width;
+        const startY = Math.random() * this.height;
+        const angle = (Math.random() - 0.5) * Math.PI * 1.5;
+        const len = Math.random() * 300 + 200;
+        this.slashTrails.push({
+          x: startX,
+          y: startY,
+          x2: startX + Math.cos(angle) * len,
+          y2: startY + Math.sin(angle) * len,
+          alpha: 1,
+          color: '#ff0055' // Sukuna cursed crimson slash
+        });
+        this.createImpactRing(startX, startY);
+      }, i * 35);
+    }
+  }
+
+  // Sukuna's Malevolent Shrine Domain Expansion Animation
+  triggerMalevolentShrine() {
+    this.triggerScreenShake(800);
+    this.triggerSpeedlines(1600);
+    this.triggerActionCutIn(800);
+    this.triggerDismantleBarrage();
+    for (let i = 0; i < 8; i++) {
+      setTimeout(() => this.spawnLightningBolt(), i * 120);
+    }
+  }
+
   // Create Katana Sparks when clicking
   createSlashSparks(x, y) {
     const angle = (Math.random() - 0.5) * Math.PI;

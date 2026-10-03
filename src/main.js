@@ -54,6 +54,62 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
+  // 6. RYOMEN SUKUNA INTERACTIVE ANIME ATTACKS & DIALOGUE
+  const btnDismantle = document.getElementById('btn-dismantle');
+  const btnDomain = document.getElementById('btn-domain');
+  const sukunaDialogueBox = document.getElementById('sukuna-dialogue-box');
+  const sukunaDialogueText = document.getElementById('sukuna-dialogue-text');
+
+  const sukunaQuotes = [
+    '"Stand proud, engineer. You are strong."',
+    '"Throughout Heaven and Earth, I alone am the Honored One."',
+    '"Know your place, fool. My domain spans across infinite clusters."',
+    '"A battle between architects is a battle of domain refinement."',
+    '"Dismantle or Cleave? Choose your deployment."'
+  ];
+  let quoteIdx = 0;
+
+  if (sukunaDialogueBox && sukunaDialogueText) {
+    sukunaDialogueBox.addEventListener('click', () => {
+      quoteIdx = (quoteIdx + 1) % sukunaQuotes.length;
+      sukunaDialogueText.innerText = sukunaQuotes[quoteIdx];
+      sound.playPowerUp();
+      animeFX.createSlashSparks(window.innerWidth * 0.7, window.innerHeight * 0.4);
+    });
+  }
+
+  if (btnDismantle) {
+    btnDismantle.addEventListener('click', () => {
+      animeFX.triggerDismantleBarrage();
+      sound.playLaserSlash();
+      if (sukunaDialogueText) {
+        sukunaDialogueText.innerText = '"Dismantle. Reality sliced clean."';
+      }
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.4 },
+        colors: ['#ff0055', '#ffffff', '#111111']
+      });
+    });
+  }
+
+  if (btnDomain) {
+    btnDomain.addEventListener('click', () => {
+      animeFX.triggerMalevolentShrine();
+      sound.playPowerUp();
+      if (sukunaDialogueText) {
+        sukunaDialogueText.innerText = '"Domain Expansion: Malevolent Shrine!"';
+      }
+      confetti({
+        particleCount: 180,
+        spread: 120,
+        origin: { y: 0.5 },
+        colors: ['#ff0055', '#a855f7', '#00f0ff', '#ffffff']
+      });
+    });
+  }
+
   // 6. Global Sound Effects
   function attachSoundEffects(elements) {
     elements.forEach((el) => {

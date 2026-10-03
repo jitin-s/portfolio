@@ -72,6 +72,191 @@ body.anime-aura-active .hero-hud-card {
   box-shadow: 0 0 45px rgba(0, 240, 255, 0.3), 0 25px 65px rgba(0, 0, 0, 0.8) !important;
 }
 
+/* ==================== RYOMEN SUKUNA ANIME CORE ==================== */
+.sukuna-card {
+  background: rgba(15, 12, 16, 0.82);
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  border-radius: 26px;
+  padding: 26px;
+  position: relative;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 0, 85, 0.15);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.sukuna-card:hover {
+  border-color: rgba(255, 0, 85, 0.6);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 0, 85, 0.3);
+}
+
+.sukuna-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 0, 85, 0.2);
+  padding-bottom: 14px;
+}
+
+.sukuna-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+}
+
+.sukuna-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 800;
+  color: #ff0055;
+  background: rgba(255, 0, 85, 0.12);
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  padding: 3px 8px;
+  border-radius: 6px;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.25);
+  animation: sukunaPulse 2s infinite;
+}
+
+@keyframes sukunaPulse {
+  0%, 100% { box-shadow: 0 0 8px rgba(255, 0, 85, 0.3); }
+  50% { box-shadow: 0 0 18px rgba(255, 0, 85, 0.7); }
+}
+
+.sukuna-portrait-container {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.sukuna-portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  animation: sukunaFloat 4s ease-in-out infinite alternate;
+}
+
+.sukuna-card:hover .sukuna-portrait {
+  transform: scale(1.06);
+  filter: contrast(1.15) brightness(1.05);
+}
+
+@keyframes sukunaFloat {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(-8px) scale(1.02); }
+}
+
+/* Cursed Energy Flames Aura Overlay */
+.sukuna-curse-aura {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(255, 0, 85, 0.35) 0%, rgba(168, 85, 247, 0.15) 45%, transparent 70%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  animation: curseFlicker 2.5s infinite ease-in-out alternate;
+}
+
+@keyframes curseFlicker {
+  0% { opacity: 0.6; filter: blur(2px); }
+  50% { opacity: 0.9; filter: blur(5px); }
+  100% { opacity: 0.7; filter: blur(3px); }
+}
+
+/* Dialogue Box */
+.sukuna-dialogue {
+  background: rgba(10, 8, 12, 0.85);
+  border: 1px solid rgba(255, 0, 85, 0.25);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: #f1f5f9;
+  line-height: 1.5;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sukuna-dialogue:hover {
+  background: rgba(20, 12, 18, 0.95);
+  border-color: rgba(255, 0, 85, 0.5);
+}
+
+.sukuna-dialogue-icon {
+  font-size: 18px;
+  animation: pulse 1.5s infinite;
+}
+
+.sukuna-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn-dismantle {
+  background: linear-gradient(135deg, rgba(255, 0, 85, 0.2), rgba(120, 0, 40, 0.4));
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-dismantle:hover {
+  background: linear-gradient(135deg, rgba(255, 0, 85, 0.45), rgba(180, 0, 60, 0.6));
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-domain {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(80, 20, 120, 0.4));
+  border: 1px solid rgba(168, 85, 247, 0.4);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-domain:hover {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.45), rgba(120, 40, 180, 0.6));
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px);
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
