@@ -7,6 +7,9 @@ class SoundEngine {
   }
 
   init() {
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume().catch(() => {});
+    }
     if (this.initialized) return;
     try {
       const AudioCtx = window.AudioContext || window.webkitAudioContext;

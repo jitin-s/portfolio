@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 });
 
-document.addEventListener('DOMContentLoaded', async () => {
+async function initApp() {
   window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
 
   // 1. Initialize Multi-Page SPA Router
@@ -121,6 +121,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         auraBtn.innerHTML = '<span>⚡ AWAKEN AURA</span>';
         auraBtn.style.borderColor = '';
         auraBtn.style.boxShadow = '';
+      }
+    });
+  }
+
+  // 6b. Sound On/Off Toggle
+  const soundToggleBtn = document.getElementById('sound-toggle');
+  const soundIndicator = document.getElementById('sound-indicator');
+  const soundText = document.getElementById('sound-text');
+  if (soundToggleBtn) {
+    soundToggleBtn.addEventListener('click', () => {
+      const active = sound.toggle();
+      if (active) {
+        if (soundText) soundText.innerText = 'SOUND: ON';
+        if (soundIndicator) soundIndicator.classList.remove('muted');
+        soundToggleBtn.classList.remove('muted');
+        sound.playClick();
+      } else {
+        if (soundText) soundText.innerText = 'SOUND: OFF';
+        if (soundIndicator) soundIndicator.classList.add('muted');
+        soundToggleBtn.classList.add('muted');
       }
     });
   }
@@ -468,4 +488,11 @@ document.addEventListener('DOMContentLoaded', async () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
   }
-});
+}
+
+// Guaranteed launch regardless of script load timing
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

@@ -68,10 +68,6 @@ body.anime-aura-active .tilt-card {
   box-shadow: 0 0 35px rgba(0, 240, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.8) !important;
 }
 
-body.anime-aura-active .hero-hud-card {
-  box-shadow: 0 0 45px rgba(0, 240, 255, 0.3), 0 25px 65px rgba(0, 0, 0, 0.8) !important;
-}
-
 /* ==================== RYOMEN SUKUNA HOLOGRAPHIC CYBER FRAME ==================== */
 .sukuna-stage {
   position: relative;
@@ -982,16 +978,17 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 
 /* Hero Grid */
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 48px;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   width: 100%;
+  max-width: 900px;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
 .hero-badge-row {
@@ -1075,7 +1072,7 @@ body.anime-aura-active .sukuna-ambient-bg.active,
   font-size: 16.5px;
   line-height: 1.7;
   color: var(--text-muted);
-  max-width: 580px;
+  max-width: 720px;
   margin-bottom: 38px;
 }
 
@@ -1132,8 +1129,8 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 .hero-metrics {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  max-width: 540px;
+  gap: 24px;
+  max-width: 600px;
   padding-top: 28px;
   border-top: 1px solid var(--border-subtle);
 }
@@ -1156,170 +1153,6 @@ body.anime-aura-active .sukuna-ambient-bg.active,
   text-transform: uppercase;
   letter-spacing: 0.06em;
   margin-top: 4px;
-}
-
-/* Hero HUD Bento Card */
-.hero-hud-card {
-  background: rgba(14, 14, 20, 0.75);
-  backdrop-filter: blur(25px);
-  border: 1px solid var(--border-subtle);
-  border-radius: 26px;
-  padding: 30px;
-  position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transition: border-color 0.3s ease;
-}
-
-.hero-hud-card:hover {
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.hud-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 22px;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 16px;
-}
-
-.hud-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--accent-silver);
-  font-weight: 600;
-}
-
-.hud-badge {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--accent-cyan);
-  background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 3px 8px;
-  border-radius: 6px;
-}
-
-.hud-avatar-box {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  margin-bottom: 24px;
-}
-
-.hud-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 20px;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  object-fit: cover;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s ease;
-}
-
-.hud-avatar:hover {
-  transform: rotate(5deg) scale(1.05);
-}
-
-.hud-user-info h3 {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-.hud-user-info p {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--accent-grey);
-}
-
-.music-widget {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.music-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.music-icon {
-  font-size: 16px;
-}
-
-.music-title {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--accent-silver);
-}
-
-.music-artist {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--text-dim);
-}
-
-.equalizer {
-  display: flex;
-  align-items: flex-end;
-  gap: 3px;
-  height: 16px;
-}
-
-.eq-bar {
-  width: 3px;
-  background: var(--accent-cyan);
-  border-radius: 2px;
-  animation: eqBounce 1.2s infinite ease-in-out alternate;
-}
-.eq-bar:nth-child(1) { height: 14px; animation-delay: 0.1s; }
-.eq-bar:nth-child(2) { height: 8px; animation-delay: 0.3s; }
-.eq-bar:nth-child(3) { height: 16px; animation-delay: 0.2s; }
-.eq-bar:nth-child(4) { height: 10px; animation-delay: 0.4s; }
-
-@keyframes eqBounce {
-  0% { transform: scaleY(0.3); }
-  100% { transform: scaleY(1); }
-}
-
-.hud-specs-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-}
-
-.hud-spec-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255, 255, 255, 0.025);
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.hud-spec-row .spec-key {
-  color: var(--text-dim);
-}
-
-.hud-spec-row .spec-val {
-  color: var(--text-main);
-  font-weight: 600;
 }
 
 /* Section Header Styles */

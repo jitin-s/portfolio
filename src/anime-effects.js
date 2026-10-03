@@ -129,6 +129,23 @@ export class AnimeEffectsEngine {
     requestAnimationFrame(step);
   }
 
+  // Cyber Anime Katana Laser Slash Sweep
+  triggerLaserSlash(durationMs = 400) {
+    const startX = Math.random() * (this.width * 0.25);
+    const startY = Math.random() * (this.height * 0.35);
+    const angle = Math.PI / 4 + (Math.random() - 0.5) * 0.35;
+    const len = Math.max(this.width, this.height) * 0.95;
+    this.slashTrails.push({
+      x: startX,
+      y: startY,
+      x2: startX + Math.cos(angle) * len,
+      y2: startY + Math.sin(angle) * len,
+      alpha: 1,
+      color: '#00f0ff'
+    });
+    this.createImpactRing(startX + (Math.cos(angle) * len) * 0.4, startY + (Math.sin(angle) * len) * 0.4);
+  }
+
   // Sukuna's Dismantle & Cleave Slash Barrage Animation
   triggerDismantleBarrage() {
     this.triggerScreenShake(500);

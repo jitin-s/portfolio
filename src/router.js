@@ -33,9 +33,13 @@ export class AppRouter {
 
     // Only trigger Anime Laser Slash & Speedlines cut on user-initiated route transitions
     if (updateHash) {
-      sound.playLaserSlash();
-      animeFX.triggerLaserSlash(400);
-      animeFX.triggerSpeedlines(500);
+      try {
+        sound?.playLaserSlash?.();
+        animeFX?.triggerLaserSlash?.(400);
+        animeFX?.triggerSpeedlines?.(500);
+      } catch (e) {
+        console.warn('Anime FX transition note:', e);
+      }
     }
 
     // Hide old page, show new page
