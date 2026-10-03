@@ -72,189 +72,213 @@ body.anime-aura-active .hero-hud-card {
   box-shadow: 0 0 45px rgba(0, 240, 255, 0.3), 0 25px 65px rgba(0, 0, 0, 0.8) !important;
 }
 
-/* ==================== RYOMEN SUKUNA ANIME CORE ==================== */
-.sukuna-card {
-  background: rgba(15, 12, 16, 0.82);
-  backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 0, 85, 0.3);
-  border-radius: 26px;
-  padding: 26px;
+/* ==================== RYOMEN SUKUNA ALIVE CHARACTER (FRAMELESS) ==================== */
+.sukuna-stage {
   position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 0, 85, 0.15);
-  transform-style: preserve-3d;
-  perspective: 1000px;
-  transition: all 0.3s ease;
-  overflow: hidden;
-}
-
-.sukuna-card:hover {
-  border-color: rgba(255, 0, 85, 0.6);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 45px rgba(255, 0, 85, 0.3);
-}
-
-.sukuna-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 18px;
-  border-bottom: 1px solid rgba(255, 0, 85, 0.2);
-  padding-bottom: 14px;
+  justify-content: center;
+  width: 100%;
+  min-height: 520px;
+  overflow: visible;
+  perspective: 1000px;
 }
 
-.sukuna-title {
+.sukuna-fire-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  height: 540px;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+.sukuna-character-wrap {
+  position: relative;
+  z-index: 2;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+}
+
+/* Manga Speech Bubble */
+.sukuna-speech-bubble {
+  position: absolute;
+  top: -45px;
+  background: rgba(14, 10, 16, 0.92);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  border-radius: 999px;
+  padding: 8px 18px;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-display);
-  font-size: 14px;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.05em;
-}
-
-.sukuna-badge {
   font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 800;
-  color: #ff0055;
-  background: rgba(255, 0, 85, 0.12);
-  border: 1px solid rgba(255, 0, 85, 0.4);
-  padding: 3px 8px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.25);
-  animation: sukunaPulse 2s infinite;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.7), 0 0 15px rgba(255, 0, 85, 0.2);
+  white-space: nowrap;
+  z-index: 10;
+  transition: all 0.25s ease;
+  animation: bubbleFloat 3s ease-in-out infinite alternate;
 }
 
-@keyframes sukunaPulse {
-  0%, 100% { box-shadow: 0 0 8px rgba(255, 0, 85, 0.3); }
-  50% { box-shadow: 0 0 18px rgba(255, 0, 85, 0.7); }
+.sukuna-speech-bubble:hover {
+  border-color: #ff0055;
+  box-shadow: 0 0 25px rgba(255, 0, 85, 0.4);
+  transform: scale(1.05);
 }
 
-.sukuna-portrait-container {
+.sukuna-speech-bubble.pop {
+  transform: scale(1.15);
+  border-color: #ff0055;
+}
+
+@keyframes bubbleFloat {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-6px); }
+}
+
+/* Character Cutout Container with Feathered Edge Mask */
+.sukuna-cutout-container {
   position: relative;
-  width: 100%;
-  height: 240px;
-  border-radius: 18px;
-  overflow: hidden;
-  margin-bottom: 18px;
-  border: 1px solid rgba(255, 0, 85, 0.3);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.8);
+  width: 360px;
+  height: 440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, black 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, black 65%, transparent 100%);
 }
 
-.sukuna-portrait {
+.sukuna-cutout-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  animation: sukunaFloat 4s ease-in-out infinite alternate;
-}
-
-.sukuna-card:hover .sukuna-portrait {
-  transform: scale(1.06);
-  filter: contrast(1.15) brightness(1.05);
-}
-
-@keyframes sukunaFloat {
-  0% { transform: translateY(0px) scale(1); }
-  100% { transform: translateY(-8px) scale(1.02); }
-}
-
-/* Cursed Energy Flames Aura Overlay */
-.sukuna-curse-aura {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 100%, rgba(255, 0, 85, 0.35) 0%, rgba(168, 85, 247, 0.15) 45%, transparent 70%);
+  object-position: center 15%;
+  filter: contrast(1.1) brightness(1.02);
+  animation: sukunaLivingBreath 4s ease-in-out infinite alternate;
   pointer-events: none;
-  mix-blend-mode: screen;
-  animation: curseFlicker 2.5s infinite ease-in-out alternate;
 }
 
-@keyframes curseFlicker {
-  0% { opacity: 0.6; filter: blur(2px); }
-  50% { opacity: 0.9; filter: blur(5px); }
-  100% { opacity: 0.7; filter: blur(3px); }
+@keyframes sukunaLivingBreath {
+  0% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.35));
+  }
+  50% {
+    transform: translateY(-8px) scale(1.02);
+    filter: drop-shadow(0 0 35px rgba(255, 0, 85, 0.6));
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.35));
+  }
 }
 
-/* Dialogue Box */
-.sukuna-dialogue {
-  background: rgba(10, 8, 12, 0.85);
-  border: 1px solid rgba(255, 0, 85, 0.25);
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin-bottom: 18px;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  color: #f1f5f9;
-  line-height: 1.5;
+/* Glowing Red Eye Flares */
+.eye-flare {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ff0055;
+  box-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
+  z-index: 5;
+  pointer-events: none;
+  animation: eyePulse 1.8s infinite ease-in-out alternate;
+}
+
+.left-eye {
+  top: 96px;
+  left: 171px;
+}
+
+.right-eye {
+  top: 96px;
+  left: 191px;
+}
+
+@keyframes eyePulse {
+  0% { opacity: 0.6; transform: scale(0.8); box-shadow: 0 0 8px #ff0055; }
+  100% { opacity: 1; transform: scale(1.4); box-shadow: 0 0 18px #ff0055, 0 0 30px #ff0055; }
+}
+
+/* Orbiting Cleave Slash Rings */
+.cleave-orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(255, 0, 85, 0.4);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.cleave-orbit-ring.ring-1 {
+  width: 320px;
+  height: 320px;
+  animation: ringSpin 9s linear infinite;
+  box-shadow: 0 0 25px rgba(255, 0, 85, 0.15);
+}
+
+.cleave-orbit-ring.ring-2 {
+  width: 380px;
+  height: 380px;
+  border-color: rgba(168, 85, 247, 0.3);
+  animation: ringSpin 14s linear infinite reverse;
+}
+
+@keyframes ringSpin {
+  0% { transform: translate(-50%, -50%) rotate(0deg) rotateX(65deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) rotateX(65deg); }
+}
+
+/* Action Trigger Pills */
+.sukuna-trigger-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.sukuna-dialogue:hover {
-  background: rgba(20, 12, 18, 0.95);
-  border-color: rgba(255, 0, 85, 0.5);
-}
-
-.sukuna-dialogue-icon {
-  font-size: 18px;
-  animation: pulse 1.5s infinite;
-}
-
-.sukuna-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 12px;
+  margin-top: 14px;
+  z-index: 5;
 }
 
-.btn-dismantle {
-  background: linear-gradient(135deg, rgba(255, 0, 85, 0.2), rgba(120, 0, 40, 0.4));
+.sukuna-action-pill {
+  background: rgba(255, 0, 85, 0.12);
   border: 1px solid rgba(255, 0, 85, 0.4);
   color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 11px;
   font-weight: 700;
-  padding: 10px 14px;
-  border-radius: 10px;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
   transition: all 0.2s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
-.btn-dismantle:hover {
-  background: linear-gradient(135deg, rgba(255, 0, 85, 0.45), rgba(180, 0, 60, 0.6));
+.sukuna-action-pill:hover {
+  background: rgba(255, 0, 85, 0.35);
   box-shadow: 0 0 20px rgba(255, 0, 85, 0.5);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.04);
 }
 
-.btn-domain {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(80, 20, 120, 0.4));
-  border: 1px solid rgba(168, 85, 247, 0.4);
-  color: #ffffff;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 10px 14px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: all 0.2s ease;
+.sukuna-action-pill.domain {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
 }
 
-.btn-domain:hover {
-  background: linear-gradient(135deg, rgba(168, 85, 247, 0.45), rgba(120, 40, 180, 0.6));
+.sukuna-action-pill.domain:hover {
+  background: rgba(168, 85, 247, 0.35);
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
-  transform: translateY(-2px);
+  transform: translateY(-2px) scale(1.04);
 }
 
 /* Custom Scrollbar */

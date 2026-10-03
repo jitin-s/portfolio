@@ -4,12 +4,16 @@ import { sound } from './sound.js';
 import { InteractiveTerminal } from './terminal.js';
 import { AppRouter } from './router.js';
 import { animeFX } from './anime-effects.js';
+import { SukunaCharacterEngine } from './sukuna-character.js';
 import { fetchLiveGitHubData, formatTimeAgo, getProjectData } from './github.js';
 import confetti from 'canvas-confetti';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
+
+  // 2. Initialize Sukuna Frameless Character Engine
+  const sukunaEngine = new SukunaCharacterEngine('sukuna-stage');
 
   // 2. Initialize Three.js 3D WebGL Scene
   try {

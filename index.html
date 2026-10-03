@@ -152,36 +152,40 @@
             </div>
           </div>
 
-          <!-- Ryomen Sukuna Anime Cursed Core -->
-          <div class="sukuna-card tilt-card">
-            <div class="card-glare"></div>
-            <div class="sukuna-header">
-              <div class="sukuna-title">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff0055" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                <span>RYOMEN SUKUNA</span>
+          <!-- Ryomen Sukuna Alive Anime Character Stage (Frameless) -->
+          <div id="sukuna-stage" class="sukuna-stage">
+            <!-- Dynamic Cursed Fire Particle Canvas behind Sukuna -->
+            <canvas id="sukuna-fire-canvas" class="sukuna-fire-canvas"></canvas>
+
+            <div class="sukuna-character-wrap">
+              <!-- Interactive Manga Speech Bubble -->
+              <div class="sukuna-speech-bubble">
+                <span>🩸</span>
+                <span class="sukuna-speech-text">"Stand proud. You are strong."</span>
               </div>
-              <span class="sukuna-badge">SPECIAL GRADE CURSE</span>
-            </div>
 
-            <div class="sukuna-portrait-container">
-              <img src="/sukuna.jpg" alt="Ryomen Sukuna" class="sukuna-portrait" />
-              <div class="sukuna-curse-aura"></div>
-            </div>
+              <!-- Orbiting Cursed Cleave Blades -->
+              <div class="cleave-orbit-ring ring-1"></div>
+              <div class="cleave-orbit-ring ring-2"></div>
 
-            <!-- Interactive Dialogue Box -->
-            <div id="sukuna-dialogue-box" class="sukuna-dialogue" title="Click to interact with Sukuna">
-              <span class="sukuna-dialogue-icon">🩸</span>
-              <span id="sukuna-dialogue-text">"Stand proud, engineer. You can code."</span>
-            </div>
+              <!-- Sukuna Character Silhouette Cutout -->
+              <div class="sukuna-cutout-container">
+                <img src="/sukuna.jpg" alt="Ryomen Sukuna" class="sukuna-cutout-img" />
 
-            <!-- Anime Attack Actions -->
-            <div class="sukuna-actions">
-              <button id="btn-dismantle" class="btn-dismantle">
-                <span>⚔️ DISMANTLE</span>
-              </button>
-              <button id="btn-domain" class="btn-domain">
-                <span>⛩️ MALEVOLENT SHRINE</span>
-              </button>
+                <!-- Cursed Glowing Eye Flares -->
+                <div class="eye-flare left-eye"></div>
+                <div class="eye-flare right-eye"></div>
+              </div>
+
+              <!-- Quick Attack Trigger Pills -->
+              <div class="sukuna-trigger-row">
+                <button id="btn-dismantle" class="sukuna-action-pill">
+                  <span>⚔️ DISMANTLE</span>
+                </button>
+                <button id="btn-domain" class="sukuna-action-pill domain">
+                  <span>⛩️ MALEVOLENT SHRINE</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
