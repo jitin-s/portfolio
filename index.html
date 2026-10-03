@@ -17,6 +17,12 @@
   <!-- Film Grain Overlay -->
   <div class="grain-overlay"></div>
 
+  <!-- Real-time Live GitHub Activity Ticker -->
+  <div class="top-ticker">
+    <span class="ticker-pulse"></span>
+    <span id="ticker-text">CONNECTING TO GITHUB STREAM... • 100% OPERATIONAL</span>
+  </div>
+
   <!-- Navigation Bar -->
   <header class="navbar">
     <a href="#hero" class="brand">
@@ -63,7 +69,9 @@
               <span class="status-pulse"></span>
               <span>AVAILABLE FOR OPPORTUNITIES</span>
             </div>
-            <span class="badge-tag">AI & SYSTEMS</span>
+            <button class="vibe-pill">shipping at 3am 🌙</button>
+            <button class="vibe-pill">fueled by matcha & caffeine ⚡</button>
+            <button class="vibe-pill">crafting 3D & AI magic ✨</button>
           </div>
 
           <h1 class="hero-title">
@@ -94,21 +102,21 @@
 
           <div class="hero-metrics">
             <div class="metric-item">
-              <div class="metric-value" data-target="11">11+</div>
-              <div class="metric-label">Repositories</div>
+              <div id="metric-repos" class="metric-value">11+</div>
+              <div class="metric-label">Repositories (Live)</div>
             </div>
             <div class="metric-item">
-              <div class="metric-value" data-target="6">6+</div>
+              <div class="metric-value">6+</div>
               <div class="metric-label">Live Deployments</div>
             </div>
             <div class="metric-item">
-              <div class="metric-value" data-target="100">100%</div>
+              <div class="metric-value">100%</div>
               <div class="metric-label">Modern Stack</div>
             </div>
           </div>
         </div>
 
-        <!-- Hero 3D HUD Card -->
+        <!-- Hero 3D HUD Bento Card -->
         <div class="hero-hud-card tilt-card">
           <div class="card-glare"></div>
           <div class="hud-header">
@@ -127,6 +135,23 @@
             </div>
           </div>
 
+          <!-- Gen-Z Cyber Music Widget -->
+          <div class="music-widget">
+            <div class="music-left">
+              <span class="music-icon">🎧</span>
+              <div>
+                <div class="music-title">Cyber Lofi Beats</div>
+                <div class="music-artist">98 BPM • Flow State Active</div>
+              </div>
+            </div>
+            <div class="equalizer">
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+              <div class="eq-bar"></div>
+            </div>
+          </div>
+
           <div class="hud-specs-list">
             <div class="hud-spec-row">
               <span class="spec-key">CORE DIRECTIVE</span>
@@ -137,8 +162,8 @@
               <span class="spec-val">Predictive AI, Interoperability, P2P</span>
             </div>
             <div class="hud-spec-row">
-              <span class="spec-key">VERCEL DEPLOYMENTS</span>
-              <span class="spec-val">Active (6+ Live Domains)</span>
+              <span class="spec-key">GITHUB STATUS</span>
+              <span class="spec-val">Auto-Syncing Live</span>
             </div>
             <div class="hud-spec-row">
               <span class="spec-key">LATENCY TOLERANCE</span>
@@ -152,10 +177,10 @@
     <!-- FEATURED PROJECTS SHOWCASE -->
     <section id="projects">
       <div class="section-header">
-        <div class="section-tag">ARCHITECTURES & PRODUCTION</div>
+        <div class="section-tag">AUTO-SYNCED WITH GITHUB</div>
         <h2 class="section-title scramble-text" data-text="Featured Deployments">Featured Deployments</h2>
         <p class="section-desc">
-          Engineered for mission-critical reliability, machine intelligence, and ultra-fluid user interfaces.
+          Live repositories dynamically synced from GitHub. Updates automatically whenever new code is pushed.
         </p>
       </div>
 
@@ -168,9 +193,9 @@
         <button class="filter-tab" data-filter="mobile">Mobile & Edge</button>
       </div>
 
-      <!-- 3D Projects Grid -->
-      <div class="projects-grid">
-        <!-- Project 1: DisasterLens -->
+      <!-- Dynamic 3D Projects Grid -->
+      <div id="projects-grid" class="projects-grid">
+        <!-- Initial Fallback/Hydrated Cards (Replaced & Enhanced live by GitHub API) -->
         <div class="tilt-card project-card" data-category="ai">
           <div class="card-glare"></div>
           <div>
@@ -180,27 +205,24 @@
             </div>
             <h3 class="project-title">DisasterLens</h3>
             <p class="project-desc">
-              National AI Multi-Hazard Predictive Intelligence & Real-Time Emergency Command Portal designed for early-warning geo-analytics and crisis mitigation.
+              National AI Multi-Hazard Predictive Intelligence & Real-Time Emergency Command Portal.
             </p>
             <div class="project-tags">
               <span class="tech-tag">Python</span>
               <span class="tech-tag">Streamlit</span>
               <span class="tech-tag">Predictive AI</span>
-              <span class="tech-tag">Geospatial</span>
             </div>
           </div>
           <div class="project-links">
             <a href="https://disasterlenss.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
               <span>Live Console</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
             <a href="https://github.com/jitin-s/DisasterLens" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
+              <span>GitHub</span>
             </a>
           </div>
         </div>
 
-        <!-- Project 2: SetuX & SetuXAI Bot -->
         <div class="tilt-card project-card" data-category="ai">
           <div class="card-glare"></div>
           <div>
@@ -208,12 +230,11 @@
               <div class="project-icon-box">🧠</div>
               <span class="project-category-badge">Agentic AI</span>
             </div>
-            <h3 class="project-title">SetuX & SetuXAI Bot</h3>
+            <h3 class="project-title">SetuXAI Bot</h3>
             <p class="project-desc">
-              Secure interoperability layer connecting enterprise legacy systems with intelligent autonomous conversational agents and API middleware.
+              Intelligent autonomous AI agent and interactive bridge for system queries and automation.
             </p>
             <div class="project-tags">
-              <span class="tech-tag">TypeScript</span>
               <span class="tech-tag">Python</span>
               <span class="tech-tag">LLM Agents</span>
               <span class="tech-tag">Vercel</span>
@@ -222,190 +243,9 @@
           <div class="project-links">
             <a href="https://setuxai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
               <span>Live Portal</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
             <a href="https://github.com/jitin-s/SetuXAI_Bot" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 3: Agniveer-Sentinel -->
-        <div class="tilt-card project-card" data-category="security">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">🛡️</div>
-              <span class="project-category-badge">Cyber Defense</span>
-            </div>
-            <h3 class="project-title">Agniveer-Sentinel</h3>
-            <p class="project-desc">
-              Autonomous Guard Network for Intelligent Vigilance, Electronic Environment Response — System for Electronic Network Threat Identification & Neutralization.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Threat Detection</span>
-              <span class="tech-tag">Network Security</span>
-              <span class="tech-tag">MIT</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/jitin-s/Agniveer-Sentinel" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>View Architecture</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/Agniveer-Sentinel" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 4: ngl Anonymous Platform -->
-        <div class="tilt-card project-card" data-category="web">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">💬</div>
-              <span class="project-category-badge">Full Stack</span>
-            </div>
-            <h3 class="project-title">ngl — Anonymous Social Feed</h3>
-            <p class="project-desc">
-              High-throughput interactive anonymous feedback and social messaging platform built with modern TypeScript and responsive UX.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Next.js</span>
-              <span class="tech-tag">TypeScript</span>
-              <span class="tech-tag">Tailwind</span>
-              <span class="tech-tag">Vercel</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://ngl-jitin-io.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Live Web App</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/ngl" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 5: MuscleHut -->
-        <div class="tilt-card project-card" data-category="web">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">🏋️</div>
-              <span class="project-category-badge">Web Application</span>
-            </div>
-            <h3 class="project-title">MuscleHut</h3>
-            <p class="project-desc">
-              Sleek, responsive digital gym and fitness hub featuring workout scheduling, tier memberships, and performance tracking interfaces.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Vercel</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://musclehut-nine.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Live Portal</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/MuscleHut" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 6: Payments Without Internet -->
-        <div class="tilt-card project-card" data-category="security">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">📶</div>
-              <span class="project-category-badge">Protocol / Crypto</span>
-            </div>
-            <h3 class="project-title">Flowpay — Offline Transactions</h3>
-            <p class="project-desc">
-              Encrypted, decentralized payment protocol enabling verified peer-to-peer financial settlements in zero-connectivity environments.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Cryptography</span>
-              <span class="tech-tag">Mesh P2P</span>
-              <span class="tech-tag">Offline Sync</span>
-              <span class="tech-tag">Apache-2.0</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/jitin-s/Payments-Without-Internet" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Protocol Specs</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/Payments-Without-Internet" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 7: TapSOS -->
-        <div class="tilt-card project-card" data-category="mobile">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">🚨</div>
-              <span class="project-category-badge">Mobile / Safety</span>
-            </div>
-            <h3 class="project-title">TapSOS</h3>
-            <p class="project-desc">
-              Tactile, fast-response mobile distress beacon broadcasting instant GPS coordinates and distress signals to emergency contacts.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">Dart</span>
-              <span class="tech-tag">GPS Telemetry</span>
-              <span class="tech-tag">Emergency</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/jitin-s/TapSOS" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Mobile Build</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/TapSOS" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- Project 8: SmartDealsHub -->
-        <div class="tilt-card project-card" data-category="web">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">🛒</div>
-              <span class="project-category-badge">Automation</span>
-            </div>
-            <h3 class="project-title">SmartDealsHub</h3>
-            <p class="project-desc">
-              Real-time e-commerce deal aggregator tracking flash sales, price anomalies, and discounted consumer electronics automatically.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Web Scraping</span>
-              <span class="tech-tag">Automation</span>
-              <span class="tech-tag">Vercel</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://smartdealshub.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Live App</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-            <a href="https://github.com/jitin-s/SmartDealsHub" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>Source</span>
+              <span>GitHub</span>
             </a>
           </div>
         </div>
@@ -423,7 +263,6 @@
       </div>
 
       <div class="skills-grid">
-        <!-- Category 1 -->
         <div class="skill-category-card">
           <div class="skill-card-header">
             <span class="skill-icon">🤖</span>
@@ -445,7 +284,6 @@
           </div>
         </div>
 
-        <!-- Category 2 -->
         <div class="skill-category-card">
           <div class="skill-card-header">
             <span class="skill-icon">⚡</span>
@@ -461,13 +299,12 @@
               <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 92%;"></div></div>
             </div>
             <div class="skill-row">
-              <div class="skill-info"><span class="name">Three.js / WebGL / CSS 3D</span><span class="level">86%</span></div>
-              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 86%;"></div></div>
+              <div class="skill-info"><span class="name">Three.js / WebGL / CSS 3D</span><span class="level">88%</span></div>
+              <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 88%;"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- Category 3 -->
         <div class="skill-category-card">
           <div class="skill-card-header">
             <span class="skill-icon">🌐</span>
@@ -489,7 +326,6 @@
           </div>
         </div>
 
-        <!-- Category 4 -->
         <div class="skill-category-card">
           <div class="skill-card-header">
             <span class="skill-icon">📱</span>
@@ -505,7 +341,7 @@
               <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 96%;"></div></div>
             </div>
             <div class="skill-row">
-              <div class="skill-info"><span class="name">Docker & Containerization</span><span class="level">82%</span></div>
+              <div class="skill-info"><span class="name">Docker & Edge Servers</span><span class="level">82%</span></div>
               <div class="skill-progress-bar"><div class="skill-progress-fill" style="width: 82%;"></div></div>
             </div>
           </div>
