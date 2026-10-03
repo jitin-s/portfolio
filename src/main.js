@@ -9,7 +9,19 @@ import { AnimeCycleEngine } from './anime-cycle.js';
 import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
 import confetti from 'canvas-confetti';
 
+// Ensure browser always starts strictly at the top of the page on refresh or initial load
+if (typeof history !== 'undefined' && 'scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
+window.addEventListener('load', () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+});
+
 document.addEventListener('DOMContentLoaded', async () => {
+  window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
 

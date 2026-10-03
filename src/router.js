@@ -31,10 +31,12 @@ export class AppRouter {
     if (!this.pages.includes(pageName)) pageName = 'home';
     if (pageName === this.currentPage && document.querySelector(`.page-view.active`)) return;
 
-    // Trigger Anime Laser Slash & Speedlines cut
-    sound.playLaserSlash();
-    animeFX.triggerLaserSlash(400);
-    animeFX.triggerSpeedlines(500);
+    // Only trigger Anime Laser Slash & Speedlines cut on user-initiated route transitions
+    if (updateHash) {
+      sound.playLaserSlash();
+      animeFX.triggerLaserSlash(400);
+      animeFX.triggerSpeedlines(500);
+    }
 
     // Hide old page, show new page
     this.pages.forEach((p) => {
@@ -55,10 +57,11 @@ export class AppRouter {
     });
 
     this.currentPage = pageName;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
     if (updateHash) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       window.location.hash = `#/${pageName}`;
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     }
 
     this.updateActiveNav(pageName);
