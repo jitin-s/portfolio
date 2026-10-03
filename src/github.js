@@ -116,7 +116,7 @@ const REPO_METADATA = {
 };
 
 // Raw network fetcher with cache-busting
-async function fetchFreshFromGitHub() {
+export async function fetchFreshFromGitHub() {
   const cacheBuster = `_t=${Date.now()}`;
   const headers = {
     Accept: 'application/vnd.github.v3+json',
@@ -204,7 +204,54 @@ export async function fetchLiveGitHubData() {
 // Explicit Force Refresh (triggered by Sync button)
 export async function forceSyncGitHub() {
   localStorage.removeItem(CACHE_KEY);
-  return await fetchFreshFromGitHub();
+  const data = await fetchFreshFromGitHub();
+  window.dispatchEvent(new CustomEvent('github-data-synced', { detail: data }));
+  return data;
+}
+
+// Real-Time Background Heartbeat Sync Engine (Auto-polls GitHub every 30s)
+let realtimeSyncTimer = null;
+let lastKnownState = {
+  repoCount: 0,
+  latestPush: null
+};
+
+export function startRealtimeGitHubSync(intervalMs = 30000, onUpdate = null) {
+  if (realtimeSyncTimer) clearInterval(realtimeSyncTimer);
+
+  const check = async () => {
+    try {
+      const freshData = await fetchFreshFromGitHub();
+      const newRepoCount = freshData.repos.length;
+      const newLatestPush = freshData.repos[0]?.pushed_at;
+
+      const hasChanged = 
+        lastKnownState.repoCount !== 0 && 
+        (lastKnownState.repoCount !== newRepoCount || lastKnownState.latestPush !== newLatestPush);
+
+      lastKnownState.repoCount = newRepoCount;
+      lastKnownState.latestPush = newLatestPush;
+
+      if (hasChanged) {
+        console.log(`[GitHub Realtime Pulse] Update detected! New repos: ${newRepoCount}`);
+        window.dispatchEvent(new CustomEvent('github-data-synced', { detail: freshData }));
+        if (typeof onUpdate === 'function') onUpdate(freshData);
+      }
+    } catch (e) {
+      console.warn('[GitHub Realtime Pulse] Offline or rate-limited, will retry in 30s:', e.message);
+    }
+  };
+
+  realtimeSyncTimer = setInterval(check, intervalMs);
+
+  // Auto pause/resume when tab changes
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) {
+      check(); // Check immediately when returning to tab
+    }
+  });
+
+  return () => clearInterval(realtimeSyncTimer);
 }
 
 export function formatTimeAgo(dateString) {

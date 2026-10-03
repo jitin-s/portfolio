@@ -2326,37 +2326,86 @@ footer {
     font-size: 15px;
   }
 
-  /* Navbar Action Buttons */
+  /* Navbar Action Buttons Seamless Mobile Responsive Layout */
   .nav-actions {
+    display: flex;
+    align-items: center;
     gap: 6px;
   }
+  .btn-bg-toggle {
+    padding: 6px 10px;
+    font-size: 10px;
+    min-height: 34px;
+  }
   .btn-awakening {
-    padding: 5px 8px;
-    font-size: 9.5px;
+    padding: 6px 10px;
+    font-size: 10px;
+    min-height: 34px;
   }
   .sound-toggle-btn {
-    padding: 5px 8px;
-    font-size: 9.5px;
+    padding: 6px 10px;
+    font-size: 10px;
+    min-height: 34px;
   }
   .btn-github {
-    padding: 5px 10px;
+    padding: 6px 12px;
     font-size: 11px;
+    min-height: 34px;
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 440px) {
   .hero-title {
-    font-size: 30px;
+    font-size: clamp(28px, 9vw, 36px);
+  }
+  
+  /* Compact Icon Mode for Navbar Buttons on Phones */
+  .btn-bg-toggle .bg-toggle-text {
+    display: none;
+  }
+  .btn-bg-toggle {
+    padding: 6px 9px;
+    border-radius: 50%;
+  }
+  .btn-awakening {
+    padding: 6px 9px;
+    font-size: 9px;
+  }
+  .sound-toggle-btn #sound-text {
+    display: none;
+  }
+  .sound-toggle-btn {
+    padding: 8px 10px;
+    border-radius: 50%;
+  }
+  .btn-github span {
+    display: none;
+  }
+  .btn-github {
+    padding: 8px;
+    border-radius: 50%;
+  }
+  
+  .sukuna-action-pill {
+    font-size: 10px;
+    min-height: 42px;
+    padding: 8px 4px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 26px;
   }
   .btn-awakening span {
     font-size: 8.5px;
   }
-  #sound-text {
-    display: none;
+  .dock-item {
+    font-size: 8px;
+    padding: 4px 2px;
   }
-  .sukuna-action-pill {
-    font-size: 10px;
-    min-height: 40px;
+  .dock-icon {
+    font-size: 14px;
   }
 }
 

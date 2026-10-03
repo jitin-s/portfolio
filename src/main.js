@@ -6,7 +6,7 @@ import { AppRouter } from './router.js';
 import { animeFX } from './anime-effects.js';
 import { SukunaCharacterEngine } from './sukuna-character.js';
 import { AnimeCycleEngine } from './anime-cycle.js';
-import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData } from './github.js';
+import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
 import confetti from 'canvas-confetti';
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -290,6 +290,21 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Listen to background revalidation updates
   window.addEventListener('github-data-synced', (e) => {
     applyGitHubData(e.detail);
+  });
+
+  // Start Continuous 30-Second Real-Time GitHub Heartbeat Sync
+  startRealtimeGitHubSync(30000, (freshData) => {
+    applyGitHubData(freshData);
+    sound.playSuccess();
+    confetti({
+      particleCount: 80,
+      spread: 75,
+      origin: { y: 0.1 },
+      colors: ['#00f0ff', '#10b981', '#ffffff']
+    });
+    if (tickerText) {
+      tickerText.innerHTML = `⚡ REALTIME SYNC: Detected new update • ${freshData.repos.length} Repositories Live`;
+    }
   });
 
   // Manual Instant Sync Handler
