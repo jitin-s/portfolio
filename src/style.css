@@ -12,7 +12,7 @@
   --accent-grey: #94a3b8;
   --accent-silver: #e2e8f0;
   --accent-cyan: #00f0ff;
-  --accent-magenta: #ff0055;
+  --accent-crimson: #ff0055;
   --accent-purple: #a855f7;
   --accent-glow: rgba(0, 240, 255, 0.2);
   --badge-bg: rgba(255, 255, 255, 0.04);
@@ -44,6 +44,32 @@ body {
     radial-gradient(circle at 50% 0%, #161724 0%, #050507 60%),
     radial-gradient(circle at 100% 50%, #0e0f18 0%, #050507 40%);
   -webkit-font-smoothing: antialiased;
+  transition: filter 0.3s ease;
+}
+
+/* Anime Screen Shake */
+@keyframes animeScreenShake {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 4px) rotate(-0.5deg); }
+  40% { transform: translate(4px, -3px) rotate(0.5deg); }
+  60% { transform: translate(-3px, -2px) rotate(-0.3deg); }
+  80% { transform: translate(3px, 2px) rotate(0.3deg); }
+}
+
+/* Anime Awakening Aura Mode Active */
+body.anime-aura-active {
+  background: 
+    radial-gradient(circle at 50% 0%, #1a1b32 0%, #050507 60%),
+    radial-gradient(circle at 100% 50%, #141224 0%, #050507 40%);
+}
+
+body.anime-aura-active .tilt-card {
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.2), 0 20px 50px rgba(0, 0, 0, 0.8) !important;
+}
+
+body.anime-aura-active .hero-hud-card {
+  box-shadow: 0 0 45px rgba(0, 240, 255, 0.3), 0 25px 65px rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Custom Scrollbar */
@@ -256,7 +282,31 @@ body {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+/* Anime Awakening Button */
+.btn-awakening {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.15), rgba(255, 0, 85, 0.15));
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: #ffffff;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-awakening:hover {
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(255, 0, 85, 0.3));
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  transform: scale(1.04);
 }
 
 .sound-toggle-btn {
@@ -328,7 +378,7 @@ body {
 @keyframes animePageIn {
   0% {
     opacity: 0;
-    transform: translateY(24px) scale(0.98);
+    transform: translateY(22px) scale(0.98);
     filter: blur(4px);
   }
   100% {
@@ -338,7 +388,7 @@ body {
   }
 }
 
-/* Anime Japanese Section Subheadings */
+/* English Anime Subheadings (Clean, No Japanese characters) */
 .anime-subtitle {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -346,6 +396,7 @@ body {
   letter-spacing: 0.15em;
   margin-bottom: 6px;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 /* Hero Grid */
@@ -728,7 +779,7 @@ body {
   line-height: 1.6;
 }
 
-/* Search bar on Projects Page */
+/* Search Bar */
 .search-bar-row {
   max-width: 500px;
   margin: 0 auto 30px;
@@ -763,7 +814,7 @@ body {
   pointer-events: none;
 }
 
-/* Project Filter Tabs */
+/* Filter Tabs */
 .filter-tabs {
   display: flex;
   justify-content: center;
@@ -1044,7 +1095,7 @@ body {
   transition: width 1s ease-in-out;
 }
 
-/* Timeline / Story Arcs */
+/* Timeline */
 .timeline-container {
   position: relative;
   max-width: 860px;
@@ -1464,7 +1515,7 @@ footer {
   color: #ffffff;
 }
 
-/* Responsive Media Queries for Mobile & Tablet */
+/* Responsive Media Queries */
 @media (max-width: 960px) {
   .hero-grid {
     grid-template-columns: 1fr;

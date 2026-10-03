@@ -30,21 +30,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 5. Sound Toggle
-  const soundBtn = document.getElementById('sound-toggle');
-  const soundInd = document.getElementById('sound-indicator');
-  const soundText = document.getElementById('sound-text');
-
-  if (soundBtn) {
-    soundBtn.addEventListener('click', () => {
-      const active = sound.toggle();
+  // 5. Sound & Anime Aura Toggles
+  const auraBtn = document.getElementById('aura-toggle');
+  if (auraBtn) {
+    auraBtn.addEventListener('click', () => {
+      const active = animeFX.toggleAwakening();
+      sound.playPowerUp();
       if (active) {
-        soundInd.classList.remove('muted');
-        soundText.textContent = 'SOUND: ON';
-        sound.playSuccess();
+        auraBtn.innerHTML = '<span>🔥 AURA ACTIVE</span>';
+        auraBtn.style.borderColor = '#ff0055';
+        auraBtn.style.boxShadow = '0 0 20px #ff0055';
+        confetti({
+          particleCount: 100,
+          spread: 80,
+          origin: { y: 0.2 },
+          colors: ['#00f0ff', '#ff0055', '#ffffff']
+        });
       } else {
-        soundInd.classList.add('muted');
-        soundText.textContent = 'SOUND: OFF';
+        auraBtn.innerHTML = '<span>⚡ AWAKEN AURA</span>';
+        auraBtn.style.borderColor = '';
+        auraBtn.style.boxShadow = '';
       }
     });
   }
