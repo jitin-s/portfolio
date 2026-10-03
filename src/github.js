@@ -1,10 +1,28 @@
 // Live GitHub Real-Time Data & Auto-Sync Engine for @jitin-s
 const USERNAME = 'jitin-s';
-const CACHE_KEY = 'jitin_github_data';
-const CACHE_TTL = 3 * 60 * 1000; // 3 minutes cache for fresh data
+const CACHE_KEY = 'jitin_github_data_v2';
+const CACHE_TTL = 30 * 1000; // 30 seconds cache TTL for super fresh updates
 
 // Curated metadata enrichment for recognized repos
 const REPO_METADATA = {
+  'portfolio-': {
+    title: 'Cyber 3D Portfolio (Live)',
+    category: 'web',
+    badge: 'Flagship 3D',
+    icon: '🌌',
+    desc: 'GenZ aesthetic 3D dark anime portfolio with real-time GitHub sync, Three.js WebGL, and Sukuna interactive animations.',
+    liveUrl: 'https://jitin-portfolio.vercel.app',
+    tags: ['Vite', 'Three.js', 'Sukuna FX', 'Vercel']
+  },
+  'jitin-s': {
+    title: 'Core Architect Matrix',
+    category: 'web',
+    badge: 'Identity Hub',
+    icon: '👤',
+    desc: 'Public developer identity, configuration matrix, and developer portfolio hub on GitHub.',
+    liveUrl: 'https://github.com/jitin-s',
+    tags: ['Profile README', 'GitHub Actions', 'Markdown']
+  },
   DisasterLens: {
     title: 'DisasterLens',
     category: 'ai',
@@ -85,14 +103,84 @@ const REPO_METADATA = {
     desc: 'Real-time e-commerce aggregator scraping live flash discounts and electronics pricing.',
     liveUrl: 'https://smartdealshub.vercel.app',
     tags: ['Python', 'Web Scraping', 'Automation', 'Vercel']
+  },
+  demo: {
+    title: 'Interactive Web Prototype',
+    category: 'web',
+    badge: 'Prototype',
+    icon: '🧪',
+    desc: 'Full-stack experimental reactive interface and architectural prototype.',
+    liveUrl: null,
+    tags: ['TypeScript', 'Vite', 'React']
   }
 };
 
+// Raw network fetcher with cache-busting
+async function fetchFreshFromGitHub() {
+  const cacheBuster = `_t=${Date.now()}`;
+  const headers = {
+    Accept: 'application/vnd.github.v3+json',
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    Pragma: 'no-cache'
+  };
+
+  const [userRes, reposRes, eventsRes] = await Promise.all([
+    fetch(`https://api.github.com/users/${USERNAME}?${cacheBuster}`, { cache: 'no-store', headers }),
+    fetch(`https://api.github.com/users/${USERNAME}/repos?sort=pushed&per_page=100&${cacheBuster}`, { cache: 'no-store', headers }),
+    fetch(`https://api.github.com/users/${USERNAME}/events/public?per_page=15&${cacheBuster}`, { cache: 'no-store', headers })
+  ]);
+
+  if (!userRes.ok || !reposRes.ok) {
+    throw new Error(`GitHub API responded with status ${userRes.status}/${reposRes.status}`);
+  }
+
+  const userData = await userRes.json();
+  const reposData = await reposRes.json();
+  const eventsData = eventsRes.ok ? await eventsRes.json() : [];
+
+  const data = {
+    user: userData,
+    repos: Array.isArray(reposData) ? reposData : [],
+    events: Array.isArray(eventsData) ? eventsData : []
+  };
+
+  localStorage.setItem(
+    CACHE_KEY,
+    JSON.stringify({ timestamp: Date.now(), data })
+  );
+
+  return data;
+}
+
+// Background revalidation
+function triggerBackgroundRevalidation(currentData) {
+  fetchFreshFromGitHub()
+    .then((freshData) => {
+      // Check if data changed
+      const oldRepoCount = currentData?.repos?.length || 0;
+      const newRepoCount = freshData?.repos?.length || 0;
+      const oldLatest = currentData?.repos?.[0]?.pushed_at;
+      const newLatest = freshData?.repos?.[0]?.pushed_at;
+
+      if (oldRepoCount !== newRepoCount || oldLatest !== newLatest) {
+        console.log(`[GitHub Sync] Detected fresh data: ${newRepoCount} repos (was ${oldRepoCount})`);
+        window.dispatchEvent(new CustomEvent('github-data-synced', { detail: freshData }));
+      }
+    })
+    .catch((err) => {
+      console.warn('[GitHub Sync] Background revalidation note:', err.message);
+    });
+}
+
+// Main fetch with Stale-While-Revalidate pattern
 export async function fetchLiveGitHubData() {
   const cached = localStorage.getItem(CACHE_KEY);
   if (cached) {
     try {
       const parsed = JSON.parse(cached);
+      // Immediately start background revalidation so user never gets stuck with old data
+      triggerBackgroundRevalidation(parsed.data);
+
       if (Date.now() - parsed.timestamp < CACHE_TTL) {
         return parsed.data;
       }
@@ -100,35 +188,10 @@ export async function fetchLiveGitHubData() {
   }
 
   try {
-    const [userRes, reposRes, eventsRes] = await Promise.all([
-      fetch(`https://api.github.com/users/${USERNAME}`),
-      fetch(`https://api.github.com/users/${USERNAME}/repos?sort=pushed&per_page=100`),
-      fetch(`https://api.github.com/users/${USERNAME}/events/public?per_page=10`)
-    ]);
-
-    if (!userRes.ok || !reposRes.ok) {
-      if (cached) return JSON.parse(cached).data;
-      return null;
-    }
-
-    const userData = await userRes.json();
-    const reposData = await reposRes.json();
-    const eventsData = eventsRes.ok ? await eventsRes.json() : [];
-
-    const data = {
-      user: userData,
-      repos: Array.isArray(reposData) ? reposData : [],
-      events: Array.isArray(eventsData) ? eventsData : []
-    };
-
-    localStorage.setItem(
-      CACHE_KEY,
-      JSON.stringify({ timestamp: Date.now(), data })
-    );
-
+    const data = await fetchFreshFromGitHub();
     return data;
   } catch (err) {
-    console.warn('GitHub Live Sync offline/rate-limited, using fallback data:', err);
+    console.warn('GitHub Live Sync fallback to cache if available:', err);
     if (cached) {
       try {
         return JSON.parse(cached).data;
@@ -138,7 +201,14 @@ export async function fetchLiveGitHubData() {
   }
 }
 
+// Explicit Force Refresh (triggered by Sync button)
+export async function forceSyncGitHub() {
+  localStorage.removeItem(CACHE_KEY);
+  return await fetchFreshFromGitHub();
+}
+
 export function formatTimeAgo(dateString) {
+  if (!dateString) return 'recently';
   const date = new Date(dateString);
   const now = new Date();
   const seconds = Math.floor((now - date) / 1000);

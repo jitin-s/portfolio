@@ -146,69 +146,68 @@ body.anime-aura-active .hero-hud-card {
   100% { transform: translateY(-6px); }
 }
 
-/* Character Cutout Container with Feathered Edge Mask */
+/* Active Technique Aura Badge */
+.sukuna-technique-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ff0055;
+  background: rgba(255, 0, 85, 0.12);
+  border: 1px solid rgba(255, 0, 85, 0.4);
+  padding: 4px 16px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  box-shadow: 0 0 18px rgba(255, 0, 85, 0.25);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+/* Character Animated Container with Feathered Soft Edge Mask (Frameless) */
 .sukuna-cutout-container {
   position: relative;
-  width: 360px;
+  width: 380px;
   height: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
-  mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, black 65%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 75% 85% at 50% 50%, black 65%, transparent 100%);
+  /* Seamless soft radial falloff so character has NO box or frame */
+  mask-image: radial-gradient(ellipse 75% 80% at 50% 48%, black 58%, transparent 95%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 80% at 50% 48%, black 58%, transparent 95%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
 }
 
-.sukuna-cutout-img {
+.sukuna-cutout-container:hover {
+  transform: scale(1.03);
+}
+
+.sukuna-anime-media {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 15%;
-  filter: contrast(1.1) brightness(1.02);
-  animation: sukunaLivingBreath 4s ease-in-out infinite alternate;
+  object-position: center 25%;
+  border-radius: 20px;
+  filter: contrast(1.15) brightness(1.05) drop-shadow(0 0 30px rgba(255, 0, 85, 0.5));
+  animation: sukunaLivingBreath 3.5s ease-in-out infinite alternate;
   pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 @keyframes sukunaLivingBreath {
   0% {
     transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.35));
+    filter: drop-shadow(0 0 25px rgba(255, 0, 85, 0.45));
   }
   50% {
     transform: translateY(-8px) scale(1.02);
-    filter: drop-shadow(0 0 35px rgba(255, 0, 85, 0.6));
+    filter: drop-shadow(0 0 45px rgba(255, 0, 85, 0.75)) drop-shadow(0 0 25px rgba(168, 85, 247, 0.4));
   }
   100% {
     transform: translateY(0px) scale(1);
-    filter: drop-shadow(0 0 20px rgba(255, 0, 85, 0.35));
+    filter: drop-shadow(0 0 25px rgba(255, 0, 85, 0.45));
   }
-}
-
-/* Glowing Red Eye Flares */
-.eye-flare {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #ff0055;
-  box-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055;
-  z-index: 5;
-  pointer-events: none;
-  animation: eyePulse 1.8s infinite ease-in-out alternate;
-}
-
-.left-eye {
-  top: 96px;
-  left: 171px;
-}
-
-.right-eye {
-  top: 96px;
-  left: 191px;
-}
-
-@keyframes eyePulse {
-  0% { opacity: 0.6; transform: scale(0.8); box-shadow: 0 0 8px #ff0055; }
-  100% { opacity: 1; transform: scale(1.4); box-shadow: 0 0 18px #ff0055, 0 0 30px #ff0055; }
 }
 
 /* Orbiting Cleave Slash Rings */
@@ -271,13 +270,41 @@ body.anime-aura-active .hero-hud-card {
 }
 
 .sukuna-action-pill.domain {
-  background: rgba(168, 85, 247, 0.15);
-  border-color: rgba(168, 85, 247, 0.4);
+  background: rgba(255, 0, 85, 0.18);
+  border-color: rgba(255, 0, 85, 0.5);
+  color: #ff0055;
 }
 
 .sukuna-action-pill.domain:hover {
+  background: rgba(255, 0, 85, 0.4);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.sukuna-action-pill.smirk {
+  background: rgba(168, 85, 247, 0.15);
+  border-color: rgba(168, 85, 247, 0.4);
+  color: #c084fc;
+}
+
+.sukuna-action-pill.smirk:hover {
   background: rgba(168, 85, 247, 0.35);
+  color: #ffffff;
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.sukuna-action-pill.flame {
+  background: rgba(255, 85, 0, 0.15);
+  border-color: rgba(255, 85, 0, 0.4);
+  color: #fb923c;
+}
+
+.sukuna-action-pill.flame:hover {
+  background: rgba(255, 85, 0, 0.35);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(255, 85, 0, 0.5);
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -347,10 +374,10 @@ body.anime-aura-active .hero-hud-card {
   background: rgba(10, 10, 14, 0.85);
   backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--border-subtle);
-  padding: 8px 16px;
+  padding: 6px 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 12px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -360,6 +387,50 @@ body.anime-aura-active .hero-hud-card {
   z-index: 120;
 }
 
+.ticker-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ticker-sync-btn {
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: #00f0ff;
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ticker-sync-btn:hover {
+  background: #00f0ff;
+  color: #08080c;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.sync-icon.spinning {
+  display: inline-block;
+  animation: spinSync 0.75s linear infinite;
+}
+
+@keyframes spinSync {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 .ticker-pulse {
   width: 6px;
   height: 6px;
@@ -367,11 +438,63 @@ body.anime-aura-active .hero-hud-card {
   background: #00f0ff;
   box-shadow: 0 0 8px #00f0ff;
   animation: pulse 1.6s infinite;
+  flex-shrink: 0;
 }
 
 .ticker-highlight {
   color: var(--accent-cyan);
   font-weight: 700;
+}
+
+/* Vault Sync Toolbar */
+.vault-sync-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+}
+
+.vault-sync-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-silver);
+}
+
+.vault-sync-status .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+.btn-vault-sync {
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  color: #00f0ff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-vault-sync:hover {
+  background: #00f0ff;
+  color: #08080c;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
 }
 
 /* App Container */

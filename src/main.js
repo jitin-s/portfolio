@@ -5,27 +5,37 @@ import { InteractiveTerminal } from './terminal.js';
 import { AppRouter } from './router.js';
 import { animeFX } from './anime-effects.js';
 import { SukunaCharacterEngine } from './sukuna-character.js';
-import { fetchLiveGitHubData, formatTimeAgo, getProjectData } from './github.js';
+import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData } from './github.js';
 import confetti from 'canvas-confetti';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
 
-  // 2. Initialize Sukuna Frameless Character Engine
+  // 2. Initialize Sukuna Frameless Animated Character Engine
   const sukunaEngine = new SukunaCharacterEngine('sukuna-stage');
 
-  // 2. Initialize Three.js 3D WebGL Scene
+  // Sukuna Technique Trigger Buttons
+  const sukunaTechBtns = document.querySelectorAll('.sukuna-action-pill[data-tech]');
+  sukunaTechBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const tech = btn.dataset.tech;
+      sukunaEngine.setTechnique(tech);
+    });
+  });
+
+  // 3. Initialize Three.js 3D WebGL Scene
   try {
     new Cyber3DScene('webgl-container');
   } catch (err) {
     console.error('Three.js scene initialization error:', err);
   }
 
-  // 3. Initialize Interactive Terminal
+  // 4. Initialize Interactive Terminal
   new InteractiveTerminal('cyber-terminal');
 
-  // 4. Mouse Spotlight Tracker
+  // 5. Mouse Spotlight Tracker
   const spotlight = document.getElementById('mouse-spotlight');
   if (spotlight) {
     window.addEventListener('mousemove', (e) => {
@@ -34,7 +44,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 5. Sound & Anime Aura Toggles
+  // 6. Sound & Anime Aura Toggles
   const auraBtn = document.getElementById('aura-toggle');
   if (auraBtn) {
     auraBtn.addEventListener('click', () => {
@@ -58,63 +68,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 6. RYOMEN SUKUNA INTERACTIVE ANIME ATTACKS & DIALOGUE
-  const btnDismantle = document.getElementById('btn-dismantle');
-  const btnDomain = document.getElementById('btn-domain');
-  const sukunaDialogueBox = document.getElementById('sukuna-dialogue-box');
-  const sukunaDialogueText = document.getElementById('sukuna-dialogue-text');
-
-  const sukunaQuotes = [
-    '"Stand proud, engineer. You are strong."',
-    '"Throughout Heaven and Earth, I alone am the Honored One."',
-    '"Know your place, fool. My domain spans across infinite clusters."',
-    '"A battle between architects is a battle of domain refinement."',
-    '"Dismantle or Cleave? Choose your deployment."'
-  ];
-  let quoteIdx = 0;
-
-  if (sukunaDialogueBox && sukunaDialogueText) {
-    sukunaDialogueBox.addEventListener('click', () => {
-      quoteIdx = (quoteIdx + 1) % sukunaQuotes.length;
-      sukunaDialogueText.innerText = sukunaQuotes[quoteIdx];
-      sound.playPowerUp();
-      animeFX.createSlashSparks(window.innerWidth * 0.7, window.innerHeight * 0.4);
-    });
-  }
-
-  if (btnDismantle) {
-    btnDismantle.addEventListener('click', () => {
-      animeFX.triggerDismantleBarrage();
-      sound.playLaserSlash();
-      if (sukunaDialogueText) {
-        sukunaDialogueText.innerText = '"Dismantle. Reality sliced clean."';
-      }
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.4 },
-        colors: ['#ff0055', '#ffffff', '#111111']
-      });
-    });
-  }
-
-  if (btnDomain) {
-    btnDomain.addEventListener('click', () => {
-      animeFX.triggerMalevolentShrine();
-      sound.playPowerUp();
-      if (sukunaDialogueText) {
-        sukunaDialogueText.innerText = '"Domain Expansion: Malevolent Shrine!"';
-      }
-      confetti({
-        particleCount: 180,
-        spread: 120,
-        origin: { y: 0.5 },
-        colors: ['#ff0055', '#a855f7', '#00f0ff', '#ffffff']
-      });
-    });
-  }
-
-  // 6. Global Sound Effects
+  // 7. Global Sound Effects
   function attachSoundEffects(elements) {
     elements.forEach((el) => {
       el.addEventListener('mouseenter', () => sound.playHover());
@@ -123,7 +77,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   attachSoundEffects(document.querySelectorAll('button, .btn-primary, .btn-secondary, .nav-link, .filter-tab, .channel-btn, .vibe-pill, .dock-item'));
 
-  // 7. 3D Tilt Card Physics Engine
+  // 8. 3D Tilt Card Physics Engine
   function applyTiltToCards(cards) {
     cards.forEach((card) => {
       const glare = card.querySelector('.card-glare');
@@ -152,7 +106,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   applyTiltToCards(document.querySelectorAll('.tilt-card'));
 
-  // 8. Text Scrambler / Decrypt Effect
+  // 9. Text Scrambler / Decrypt Effect
   const scrambleElements = document.querySelectorAll('.scramble-text');
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
 
@@ -179,7 +133,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     el.addEventListener('mouseenter', () => scramble(el));
   });
 
-  // 9. Magnetic Physics on CTA Buttons
+  // 10. Magnetic Physics on CTA Buttons
   const magneticButtons = document.querySelectorAll('.btn-primary, .btn-secondary, .brand-hex');
   magneticButtons.forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
@@ -193,91 +147,145 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // 10. LIVE GITHUB AUTO-SYNC & DYNAMIC POPULATION
+  // 11. LIVE GITHUB AUTO-SYNC & DYNAMIC POPULATION ENGINE
   const tickerText = document.getElementById('ticker-text');
   const repoMetric = document.getElementById('metric-repos');
   const projectsGrid = document.getElementById('projects-grid');
   const homeProjectsGrid = document.getElementById('home-featured-grid');
+  const vaultRepoCountLabel = document.getElementById('vault-repo-count-label');
+  const btnSyncTop = document.getElementById('btn-sync-github');
+  const btnVaultRefresh = document.getElementById('btn-vault-refresh');
 
   let allProjectsData = [];
 
-  try {
-    const githubData = await fetchLiveGitHubData();
+  function renderProjectsList(container, projects) {
+    if (!container) return;
+    container.innerHTML = '';
 
-    if (githubData && githubData.user) {
-      if (repoMetric) {
-        repoMetric.innerText = `${githubData.user.public_repos || 11}+`;
-      }
+    projects.forEach((p) => {
+      const card = document.createElement('div');
+      card.className = 'tilt-card project-card';
+      card.dataset.category = p.category;
 
-      if (tickerText && githubData.events && githubData.events.length > 0) {
-        const pushEvent = githubData.events.find((e) => e.type === 'PushEvent') || githubData.events[0];
-        if (pushEvent) {
-          const repoShort = pushEvent.repo ? pushEvent.repo.name.replace('jitin-s/', '') : 'latest project';
-          const timeAgo = formatTimeAgo(pushEvent.created_at);
-          tickerText.innerHTML = `LIVE GITHUB PULSE: Pushed to <span class="ticker-highlight">${repoShort}</span> (${timeAgo}) • 100% OPERATIONAL`;
-        }
-      }
+      const liveBtnHtml = p.liveUrl
+        ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+             <span>Launch Portal</span>
+             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+           </a>`
+        : '';
 
-      if (githubData.repos && githubData.repos.length > 0) {
-        allProjectsData = githubData.repos.map((repo) => getProjectData(repo));
+      const tagsHtml = p.tags.map((t) => `<span class="tech-tag">${t}</span>`).join('');
 
-        function renderProjectsList(container, projects) {
-          if (!container) return;
-          container.innerHTML = '';
+      card.innerHTML = `
+        <div class="card-glare"></div>
+        <div>
+          <div class="card-top">
+            <div class="project-icon-box">${p.icon}</div>
+            <span class="project-category-badge">${p.badge}</span>
+          </div>
+          <h3 class="project-title">${p.title}</h3>
+          <p class="project-desc">${p.desc}</p>
+          <div class="project-tags">
+            ${tagsHtml}
+            <span class="tech-tag" style="color:#00f0ff;">⚡ ${formatTimeAgo(p.updatedAt)}</span>
+          </div>
+        </div>
+        <div class="project-links">
+          ${liveBtnHtml}
+          <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+            <span>GitHub (${p.stars}★)</span>
+          </a>
+        </div>
+      `;
+      container.appendChild(card);
+    });
 
-          projects.forEach((p) => {
-            const card = document.createElement('div');
-            card.className = 'tilt-card project-card';
-            card.dataset.category = p.category;
-
-            const liveBtnHtml = p.liveUrl
-              ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-                   <span>Launch Portal</span>
-                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                 </a>`
-              : '';
-
-            const tagsHtml = p.tags.map((t) => `<span class="tech-tag">${t}</span>`).join('');
-
-            card.innerHTML = `
-              <div class="card-glare"></div>
-              <div>
-                <div class="card-top">
-                  <div class="project-icon-box">${p.icon}</div>
-                  <span class="project-category-badge">${p.badge}</span>
-                </div>
-                <h3 class="project-title">${p.title}</h3>
-                <p class="project-desc">${p.desc}</p>
-                <div class="project-tags">
-                  ${tagsHtml}
-                  <span class="tech-tag" style="color:#00f0ff;">⚡ ${formatTimeAgo(p.updatedAt)}</span>
-                </div>
-              </div>
-              <div class="project-links">
-                ${liveBtnHtml}
-                <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-                  <span>GitHub (${p.stars}★)</span>
-                </a>
-              </div>
-            `;
-            container.appendChild(card);
-          });
-
-          applyTiltToCards(container.querySelectorAll('.tilt-card'));
-          attachSoundEffects(container.querySelectorAll('.btn-card-link, .tilt-card'));
-        }
-
-        renderProjectsList(projectsGrid, allProjectsData);
-        if (homeProjectsGrid) {
-          renderProjectsList(homeProjectsGrid, allProjectsData.slice(0, 4));
-        }
-      }
-    }
-  } catch (err) {
-    console.warn('Live GitHub sync error:', err);
+    applyTiltToCards(container.querySelectorAll('.tilt-card'));
+    attachSoundEffects(container.querySelectorAll('.btn-card-link, .tilt-card'));
   }
 
-  // 11. Projects Search Filter
+  function applyGitHubData(githubData) {
+    if (!githubData || !githubData.user) return;
+
+    const repoCount = githubData.repos ? githubData.repos.length : githubData.user.public_repos;
+    if (repoMetric) {
+      repoMetric.innerText = `${repoCount}+`;
+    }
+
+    if (vaultRepoCountLabel) {
+      vaultRepoCountLabel.innerText = `SYNCED ${repoCount} REPOSITORIES DIRECTLY FROM GITHUB`;
+    }
+
+    if (tickerText && githubData.events && githubData.events.length > 0) {
+      const pushEvent = githubData.events.find((e) => e.type === 'PushEvent') || githubData.events[0];
+      if (pushEvent) {
+        const repoShort = pushEvent.repo ? pushEvent.repo.name.replace('jitin-s/', '') : 'latest project';
+        const timeAgo = formatTimeAgo(pushEvent.created_at);
+        tickerText.innerHTML = `LIVE GITHUB PULSE: Pushed to <span class="ticker-highlight">${repoShort}</span> (${timeAgo}) • ${repoCount} REPOS ACTIVE`;
+      }
+    }
+
+    if (githubData.repos && githubData.repos.length > 0) {
+      allProjectsData = githubData.repos.map((repo) => getProjectData(repo));
+      renderProjectsList(projectsGrid, allProjectsData);
+      if (homeProjectsGrid) {
+        renderProjectsList(homeProjectsGrid, allProjectsData.slice(0, 4));
+      }
+    }
+  }
+
+  // Load Initial Data
+  try {
+    const initialData = await fetchLiveGitHubData();
+    if (initialData) applyGitHubData(initialData);
+  } catch (err) {
+    console.warn('Initial GitHub data load note:', err);
+  }
+
+  // Listen to background revalidation updates
+  window.addEventListener('github-data-synced', (e) => {
+    applyGitHubData(e.detail);
+  });
+
+  // Manual Instant Sync Handler
+  async function triggerManualSync(buttonEl) {
+    if (!buttonEl) return;
+    const syncIcon = buttonEl.querySelector('.sync-icon');
+    if (syncIcon) syncIcon.classList.add('spinning');
+    sound.playPowerUp();
+
+    try {
+      if (tickerText) tickerText.innerHTML = `SYNCING DIRECTLY WITH GITHUB API...`;
+      const freshData = await forceSyncGitHub();
+      applyGitHubData(freshData);
+      sound.playSuccess();
+
+      confetti({
+        particleCount: 90,
+        spread: 75,
+        origin: { y: 0.1 },
+        colors: ['#00f0ff', '#10b981', '#ffffff']
+      });
+
+      if (tickerText) {
+        tickerText.innerHTML = `✅ SYNCED WITH GITHUB: <span class="ticker-highlight">${freshData.repos.length} REPOSITORIES UP TO DATE</span>`;
+      }
+    } catch (err) {
+      console.error('Manual GitHub sync failed:', err);
+      if (tickerText) tickerText.innerHTML = `SYNC NOTE: Rate limited or offline, cached data retained`;
+    } finally {
+      if (syncIcon) syncIcon.classList.remove('spinning');
+    }
+  }
+
+  if (btnSyncTop) {
+    btnSyncTop.addEventListener('click', () => triggerManualSync(btnSyncTop));
+  }
+  if (btnVaultRefresh) {
+    btnVaultRefresh.addEventListener('click', () => triggerManualSync(btnVaultRefresh));
+  }
+
+  // 12. Projects Search Filter
   const searchInput = document.getElementById('project-search');
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
@@ -295,7 +303,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 12. Filter Tabs Handler
+  // 13. Filter Tabs Handler
   const filterTabs = document.querySelectorAll('.filter-tab');
   filterTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -316,7 +324,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // 13. Interactive Vibe Pills celebration
+  // 14. Interactive Vibe Pills celebration
   const vibePills = document.querySelectorAll('.vibe-pill');
   vibePills.forEach((pill) => {
     pill.addEventListener('click', () => {
@@ -331,7 +339,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // 14. Contact Form Submission
+  // 15. Contact Form Submission
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
@@ -364,7 +372,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 15. Copy Helper
+  // 16. Copy Helper
   window.copyText = (text, btnElement) => {
     navigator.clipboard.writeText(text).then(() => {
       const original = btnElement.innerText;
@@ -381,7 +389,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   };
 
-  // 16. Back to Top
+  // 17. Back to Top
   const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
     backToTop.addEventListener('click', () => {

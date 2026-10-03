@@ -17,10 +17,16 @@
   <!-- Film Grain Overlay -->
   <div class="grain-overlay"></div>
 
-  <!-- Real-time Live GitHub Activity Ticker -->
+  <!-- Real-time Live GitHub Activity Ticker with Instant Force Sync -->
   <div class="top-ticker">
-    <span class="ticker-pulse"></span>
-    <span id="ticker-text">CONNECTING TO GITHUB STREAM... • 100% OPERATIONAL</span>
+    <div class="ticker-left">
+      <span class="ticker-pulse"></span>
+      <span id="ticker-text">CONNECTING TO GITHUB STREAM... • 100% OPERATIONAL</span>
+    </div>
+    <button id="btn-sync-github" class="ticker-sync-btn" title="Force sync with live GitHub API">
+      <span class="sync-icon">🔄</span>
+      <span class="sync-label">SYNC GITHUB</span>
+    </button>
   </div>
 
   <!-- Desktop Navigation Bar -->
@@ -152,38 +158,43 @@
             </div>
           </div>
 
-          <!-- Ryomen Sukuna Alive Anime Character Stage (Frameless) -->
+          <!-- Ryomen Sukuna Alive Anime Character Stage (Frameless Animation) -->
           <div id="sukuna-stage" class="sukuna-stage">
             <!-- Dynamic Cursed Fire Particle Canvas behind Sukuna -->
             <canvas id="sukuna-fire-canvas" class="sukuna-fire-canvas"></canvas>
 
             <div class="sukuna-character-wrap">
               <!-- Interactive Manga Speech Bubble -->
-              <div class="sukuna-speech-bubble">
+              <div class="sukuna-speech-bubble" title="Click to trigger attack dialogue">
                 <span>🩸</span>
-                <span class="sukuna-speech-text">"Stand proud. You are strong."</span>
+                <span class="sukuna-speech-text">"Domain Expansion: Malevolent Shrine!"</span>
               </div>
+
+              <!-- Active Technique Badge -->
+              <div id="sukuna-technique-badge" class="sukuna-technique-badge">⛩️ DOMAIN EXPANSION</div>
 
               <!-- Orbiting Cursed Cleave Blades -->
               <div class="cleave-orbit-ring ring-1"></div>
               <div class="cleave-orbit-ring ring-2"></div>
 
-              <!-- Sukuna Character Silhouette Cutout -->
-              <div class="sukuna-cutout-container">
-                <img src="/sukuna.jpg" alt="Ryomen Sukuna" class="sukuna-cutout-img" />
-
-                <!-- Cursed Glowing Eye Flares -->
-                <div class="eye-flare left-eye"></div>
-                <div class="eye-flare right-eye"></div>
+              <!-- Sukuna Character Animated Media (Soft Masked, No Box) -->
+              <div class="sukuna-cutout-container" title="Click Sukuna to cycle technique!">
+                <img id="sukuna-anime-media" src="/sukuna.gif" alt="Ryomen Sukuna Moving Anime Animation" class="sukuna-anime-media" />
               </div>
 
-              <!-- Quick Attack Trigger Pills -->
+              <!-- Quick Technique Trigger Pills -->
               <div class="sukuna-trigger-row">
-                <button id="btn-dismantle" class="sukuna-action-pill">
+                <button class="sukuna-action-pill domain" data-tech="domain">
+                  <span>⛩️ DOMAIN</span>
+                </button>
+                <button class="sukuna-action-pill" data-tech="battle">
                   <span>⚔️ DISMANTLE</span>
                 </button>
-                <button id="btn-domain" class="sukuna-action-pill domain">
-                  <span>⛩️ MALEVOLENT SHRINE</span>
+                <button class="sukuna-action-pill smirk" data-tech="smile">
+                  <span>😈 SMIRK</span>
+                </button>
+                <button class="sukuna-action-pill flame" data-tech="flame">
+                  <span>🔥 FŪGA</span>
                 </button>
               </div>
             </div>
@@ -220,6 +231,18 @@
         <p class="section-desc">
           Live repositories dynamically synced from GitHub. Updates automatically whenever new code is pushed.
         </p>
+
+        <!-- Live Sync Toolbar -->
+        <div class="vault-sync-bar">
+          <div class="vault-sync-status">
+            <span class="pulse-dot"></span>
+            <span id="vault-repo-count-label">SYNCING 12 REPOSITORIES FROM GITHUB</span>
+          </div>
+          <button id="btn-vault-refresh" class="btn-vault-sync" title="Force refresh live repositories">
+            <span class="sync-icon">🔄</span>
+            <span>FORCE REFRESH REPOS</span>
+          </button>
+        </div>
       </div>
 
       <!-- Search Bar -->
