@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jitin Sain — Full Stack & AI Systems Architect</title>
   <meta name="description" content="Portfolio of Jitin Sain: AI Systems Developer, Full Stack Engineer, and Builder of National-scale AI platforms and resilient architectures." />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300f0ff'%3E%3Cpolygon points='12 2 2 7 12 12 22 7 12 2'/%3E%3Cpolyline points='2 17 12 22 22 17'/%3E%3Cpolyline points='2 12 12 17 22 12'/%3E%3C/svg%3E" />
 </head>
 <body>
   <!-- 3D Three.js WebGL Canvas Layer -->
@@ -23,28 +23,29 @@
     <span id="ticker-text">CONNECTING TO GITHUB STREAM... • 100% OPERATIONAL</span>
   </div>
 
-  <!-- Navigation Bar -->
+  <!-- Desktop Navigation Bar -->
   <header class="navbar">
-    <a href="#hero" class="brand">
+    <a href="#/home" data-route="home" class="brand">
       <div class="brand-hex">JS</div>
       <div>
         <div class="brand-text">Jitin Sain</div>
       </div>
-      <span class="brand-tag">v2.6</span>
+      <span class="brand-tag">S-RANK</span>
     </a>
 
     <nav>
       <ul class="nav-links">
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#skills" class="nav-link">Arsenal</a></li>
-        <li><a href="#timeline" class="nav-link">Trajectory</a></li>
-        <li><a href="#terminal" class="nav-link">Terminal</a></li>
-        <li><a href="#contact" class="nav-link">Transmission</a></li>
+        <li><a href="#/home" data-route="home" class="nav-link active">Home</a></li>
+        <li><a href="#/projects" data-route="projects" class="nav-link">Vault</a></li>
+        <li><a href="#/arsenal" data-route="arsenal" class="nav-link">Arsenal</a></li>
+        <li><a href="#/trajectory" data-route="trajectory" class="nav-link">Story Arcs</a></li>
+        <li><a href="#/terminal" data-route="terminal" class="nav-link">Terminal</a></li>
+        <li><a href="#/transmission" data-route="transmission" class="nav-link">Comms</a></li>
       </ul>
     </nav>
 
     <div class="nav-actions">
-      <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Cyber Sound Effects">
+      <button id="sound-toggle" class="sound-toggle-btn" aria-label="Toggle Sound Effects">
         <span id="sound-indicator" class="sound-indicator"></span>
         <span id="sound-text">SOUND: ON</span>
       </button>
@@ -58,130 +59,187 @@
     </div>
   </header>
 
+  <!-- Mobile Bottom Cyber Dock -->
+  <nav class="mobile-bottom-dock">
+    <a href="#/home" data-route="home" class="dock-item active">
+      <span class="dock-icon">🏠</span>
+      <span>Home</span>
+    </a>
+    <a href="#/projects" data-route="projects" class="dock-item">
+      <span class="dock-icon">⚡</span>
+      <span>Vault</span>
+    </a>
+    <a href="#/arsenal" data-route="arsenal" class="dock-item">
+      <span class="dock-icon">⚔️</span>
+      <span>Arsenal</span>
+    </a>
+    <a href="#/trajectory" data-route="trajectory" class="dock-item">
+      <span class="dock-icon">📜</span>
+      <span>Arcs</span>
+    </a>
+    <a href="#/terminal" data-route="terminal" class="dock-item">
+      <span class="dock-icon">💻</span>
+      <span>Shell</span>
+    </a>
+    <a href="#/transmission" data-route="transmission" class="dock-item">
+      <span class="dock-icon">📡</span>
+      <span>Comms</span>
+    </a>
+  </nav>
+
   <div class="app-container">
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="cyber-grid"></div>
-      <div class="hero-grid">
-        <div class="hero-content">
-          <div class="hero-badge-row">
-            <div class="status-chip">
-              <span class="status-pulse"></span>
-              <span>AVAILABLE FOR OPPORTUNITIES</span>
+    <!-- ==================== PAGE 1: HOME ==================== -->
+    <div id="page-home" class="page-view active">
+      <section class="hero-section" style="padding-top: 40px; min-height: auto;">
+        <div class="cyber-grid"></div>
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="hero-badge-row">
+              <div class="status-chip">
+                <span class="status-pulse"></span>
+                <span>AVAILABLE FOR CONTRACTS & ROLES</span>
+              </div>
+              <button class="vibe-pill">shipping at 3am 🌙</button>
+              <button class="vibe-pill">fueled by matcha & caffeine ⚡</button>
+              <button class="vibe-pill">crafting 3D & AI magic ✨</button>
             </div>
-            <button class="vibe-pill">shipping at 3am 🌙</button>
-            <button class="vibe-pill">fueled by matcha & caffeine ⚡</button>
-            <button class="vibe-pill">crafting 3D & AI magic ✨</button>
-          </div>
 
-          <h1 class="hero-title">
-            <span class="scramble-text" data-text="JITIN SAIN">JITIN SAIN</span>
-          </h1>
+            <div class="anime-subtitle">// アーキテクト • SYSTEM ARCHITECT</div>
+            <h1 class="hero-title">
+              <span class="scramble-text" data-text="JITIN SAIN">JITIN SAIN</span>
+            </h1>
 
-          <div class="hero-subtitle">
-            <span>Full Stack Engineer & AI Systems Developer</span>
-          </div>
-
-          <p class="hero-desc">
-            Architecting national-scale emergency AI intelligence platforms, autonomous security sentinels, offline transaction protocols, and high-concurrency web systems.
-          </p>
-
-          <div class="hero-cta-group">
-            <a href="#projects" class="btn-primary">
-              <span>EXPLORE DEPLOYMENTS</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-            <a href="#terminal" class="btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
-              <span>ACCESS TERMINAL</span>
-            </a>
-            <a href="#contact" class="btn-secondary">
-              <span>TRANSMIT SIGNAL</span>
-            </a>
-          </div>
-
-          <div class="hero-metrics">
-            <div class="metric-item">
-              <div id="metric-repos" class="metric-value">11+</div>
-              <div class="metric-label">Repositories (Live)</div>
+            <div class="hero-subtitle">
+              <span>Full Stack Engineer & AI Systems Developer</span>
             </div>
-            <div class="metric-item">
-              <div class="metric-value">6+</div>
-              <div class="metric-label">Live Deployments</div>
-            </div>
-            <div class="metric-item">
-              <div class="metric-value">100%</div>
-              <div class="metric-label">Modern Stack</div>
-            </div>
-          </div>
-        </div>
 
-        <!-- Hero 3D HUD Bento Card -->
-        <div class="hero-hud-card tilt-card">
-          <div class="card-glare"></div>
-          <div class="hud-header">
-            <div class="hud-title">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              <span>OPERATOR STATUS: VERIFIED</span>
-            </div>
-            <span class="hud-badge">ONLINE</span>
-          </div>
+            <p class="hero-desc">
+              Pioneering national emergency AI intelligence portals, autonomous threat sentinels, offline transaction mesh protocols, and high-concurrency modern web applications.
+            </p>
 
-          <div class="hud-avatar-box">
-            <img src="https://avatars.githubusercontent.com/u/96179621?v=4" alt="Jitin Sain Avatar" class="hud-avatar" />
-            <div class="hud-user-info">
-              <h3>Jitin Sain</h3>
-              <p>@jitin-s • System Architect</p>
+            <div class="hero-cta-group">
+              <a href="#/projects" data-route="projects" class="btn-primary">
+                <span>OPEN PROJECT VAULT</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+              <a href="#/terminal" data-route="terminal" class="btn-secondary">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                <span>CYBER TERMINAL</span>
+              </a>
+              <a href="#/transmission" data-route="transmission" class="btn-secondary">
+                <span>TRANSMIT SIGNAL</span>
+              </a>
             </div>
-          </div>
 
-          <!-- Gen-Z Cyber Music Widget -->
-          <div class="music-widget">
-            <div class="music-left">
-              <span class="music-icon">🎧</span>
-              <div>
-                <div class="music-title">Cyber Lofi Beats</div>
-                <div class="music-artist">98 BPM • Flow State Active</div>
+            <div class="hero-metrics">
+              <div class="metric-item">
+                <div id="metric-repos" class="metric-value">11+</div>
+                <div class="metric-label">Repositories (Live)</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">6+</div>
+                <div class="metric-label">Live Deployments</div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-value">100%</div>
+                <div class="metric-label">Modern Stack</div>
               </div>
             </div>
-            <div class="equalizer">
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-              <div class="eq-bar"></div>
-            </div>
           </div>
 
-          <div class="hud-specs-list">
-            <div class="hud-spec-row">
-              <span class="spec-key">CORE DIRECTIVE</span>
-              <span class="spec-val">AI & High-Performance Web</span>
+          <!-- Hero 3D HUD Bento Card -->
+          <div class="hero-hud-card tilt-card">
+            <div class="card-glare"></div>
+            <div class="hud-header">
+              <div class="hud-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                <span>OPERATOR STATUS: VERIFIED</span>
+              </div>
+              <span class="hud-badge">ONLINE</span>
             </div>
-            <div class="hud-spec-row">
-              <span class="spec-key">SPECIALIZATION</span>
-              <span class="spec-val">Predictive AI, Interoperability, P2P</span>
+
+            <div class="hud-avatar-box">
+              <img src="https://avatars.githubusercontent.com/u/96179621?v=4" alt="Jitin Sain Avatar" class="hud-avatar" />
+              <div class="hud-user-info">
+                <h3>Jitin Sain</h3>
+                <p>@jitin-s • System Architect</p>
+              </div>
             </div>
-            <div class="hud-spec-row">
-              <span class="spec-key">GITHUB STATUS</span>
-              <span class="spec-val">Auto-Syncing Live</span>
+
+            <!-- Anime Cyber Music Widget -->
+            <div class="music-widget">
+              <div class="music-left">
+                <span class="music-icon">🎧</span>
+                <div>
+                  <div class="music-title">Cyber Lofi Beats</div>
+                  <div class="music-artist">98 BPM • Flow State Active</div>
+                </div>
+              </div>
+              <div class="equalizer">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+              </div>
             </div>
-            <div class="hud-spec-row">
-              <span class="spec-key">LATENCY TOLERANCE</span>
-              <span class="spec-val">&lt; 15ms Edge Optimization</span>
+
+            <div class="hud-specs-list">
+              <div class="hud-spec-row">
+                <span class="spec-key">PRIMARY AFFILIATION</span>
+                <span class="spec-val">AI Systems & High-Perf Web</span>
+              </div>
+              <div class="hud-spec-row">
+                <span class="spec-key">SPECIALIZATION</span>
+                <span class="spec-val">Predictive AI, P2P, Interoperability</span>
+              </div>
+              <div class="hud-spec-row">
+                <span class="spec-key">GITHUB STATUS</span>
+                <span class="spec-val">Auto-Syncing Live</span>
+              </div>
+              <div class="hud-spec-row">
+                <span class="spec-key">LATENCY TOLERANCE</span>
+                <span class="spec-val">&lt; 15ms Edge Optimization</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FEATURED PROJECTS SHOWCASE -->
-    <section id="projects">
+      <!-- Featured Highlights Grid on Home -->
+      <section style="padding: 70px 0 0;">
+        <div class="section-header">
+          <div class="anime-subtitle">// 注目プロジェクト • FEATURED VAULT</div>
+          <h2 class="section-title scramble-text" data-text="Featured Deployments">Featured Deployments</h2>
+          <p class="section-desc">Selected high-impact architectures automatically synced from GitHub.</p>
+        </div>
+
+        <div id="home-featured-grid" class="projects-grid">
+          <!-- Populated by GitHub API -->
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+          <a href="#/projects" data-route="projects" class="btn-primary">
+            <span>EXPLORE ALL CODEBASES & LIVE APPS →</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- ==================== PAGE 2: PROJECTS VAULT ==================== -->
+    <div id="page-projects" class="page-view">
       <div class="section-header">
+        <div class="anime-subtitle">// プロジェクト • PRODUCTION VAULT</div>
         <div class="section-tag">AUTO-SYNCED WITH GITHUB</div>
-        <h2 class="section-title scramble-text" data-text="Featured Deployments">Featured Deployments</h2>
+        <h2 class="section-title scramble-text" data-text="Production Vault">Production Vault</h2>
         <p class="section-desc">
           Live repositories dynamically synced from GitHub. Updates automatically whenever new code is pushed.
         </p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar-row">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="project-search" class="search-input" placeholder="Search projects by keyword (e.g. AI, Python, Streamlit, Next.js)..." />
       </div>
 
       <!-- Filter Tabs -->
@@ -195,70 +253,18 @@
 
       <!-- Dynamic 3D Projects Grid -->
       <div id="projects-grid" class="projects-grid">
-        <!-- Initial Fallback/Hydrated Cards (Replaced & Enhanced live by GitHub API) -->
-        <div class="tilt-card project-card" data-category="ai">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">⚡</div>
-              <span class="project-category-badge">AI Intelligence</span>
-            </div>
-            <h3 class="project-title">DisasterLens</h3>
-            <p class="project-desc">
-              National AI Multi-Hazard Predictive Intelligence & Real-Time Emergency Command Portal.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Streamlit</span>
-              <span class="tech-tag">Predictive AI</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://disasterlenss.streamlit.app/" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Live Console</span>
-            </a>
-            <a href="https://github.com/jitin-s/DisasterLens" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="tilt-card project-card" data-category="ai">
-          <div class="card-glare"></div>
-          <div>
-            <div class="card-top">
-              <div class="project-icon-box">🧠</div>
-              <span class="project-category-badge">Agentic AI</span>
-            </div>
-            <h3 class="project-title">SetuXAI Bot</h3>
-            <p class="project-desc">
-              Intelligent autonomous AI agent and interactive bridge for system queries and automation.
-            </p>
-            <div class="project-tags">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">LLM Agents</span>
-              <span class="tech-tag">Vercel</span>
-            </div>
-          </div>
-          <div class="project-links">
-            <a href="https://setuxai.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-              <span>Live Portal</span>
-            </a>
-            <a href="https://github.com/jitin-s/SetuXAI_Bot" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-              <span>GitHub</span>
-            </a>
-          </div>
-        </div>
+        <!-- Rendered from GitHub API -->
       </div>
-    </section>
+    </div>
 
-    <!-- TECHNICAL ARSENAL / SKILLS GALAXY -->
-    <section id="skills">
+    <!-- ==================== PAGE 3: TECHNICAL ARSENAL ==================== -->
+    <div id="page-arsenal" class="page-view">
       <div class="section-header">
-        <div class="section-tag">COMPETENCY MATRIX</div>
-        <h2 class="section-title scramble-text" data-text="Technical Arsenal">Technical Arsenal</h2>
+        <div class="anime-subtitle">// スキル • COMBAT ARSENAL</div>
+        <div class="section-tag">POWER MATRIX & CAPABILITIES</div>
+        <h2 class="section-title scramble-text" data-text="Combat Arsenal">Combat Arsenal</h2>
         <p class="section-desc">
-          Core toolkits, programming paradigms, and systems engineering frameworks deployed across production architectures.
+          Technical mastery levels, architectural tooling, and algorithmic frameworks.
         </p>
       </div>
 
@@ -266,7 +272,7 @@
         <div class="skill-category-card">
           <div class="skill-card-header">
             <span class="skill-icon">🤖</span>
-            <h3 class="skill-title">AI & Data Systems</h3>
+            <h3 class="skill-title">AI & Deep Learning</h3>
           </div>
           <div class="skill-list">
             <div class="skill-row">
@@ -347,14 +353,15 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- ARCHITECTURE TRAJECTORY TIMELINE -->
-    <section id="timeline">
+    <!-- ==================== PAGE 4: STORY ARCS ==================== -->
+    <div id="page-trajectory" class="page-view">
       <div class="section-header">
-        <div class="section-tag">ENGINEERING MILESTONES</div>
-        <h2 class="section-title scramble-text" data-text="System Trajectory">System Trajectory</h2>
-        <p class="section-desc">Evolution of projects, open-source architectures, and high-impact initiatives.</p>
+        <div class="anime-subtitle">// 物語 • STORY ARCS</div>
+        <div class="section-tag">ENGINEERING SAGA</div>
+        <h2 class="section-title scramble-text" data-text="Chronological Arcs">Chronological Arcs</h2>
+        <p class="section-desc">Major milestones, algorithmic breakthroughs, and technical sagas.</p>
       </div>
 
       <div class="timeline-container">
@@ -363,7 +370,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <div class="timeline-date">CURRENT • 2026</div>
+            <div class="timeline-date">ARC III • CURRENT (2026)</div>
             <h4 class="timeline-heading">National Predictive AI & Agentic Interoperability</h4>
             <p class="timeline-desc">
               Pioneered <strong>DisasterLens</strong> emergency predictive intelligence portal and engineered <strong>SetuX</strong> secure interoperability protocols connecting distributed enterprise APIs with LLM autonomous bots.
@@ -374,7 +381,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <div class="timeline-date">2026</div>
+            <div class="timeline-date">ARC II • 2026</div>
             <h4 class="timeline-heading">Resilient Offline Mesh Protocols & Cyber Defense</h4>
             <p class="timeline-desc">
               Engineered <strong>Flowpay</strong> (encrypted offline digital transactions) and <strong>Agniveer-Sentinel</strong> (autonomous threat neutralization framework) for zero-trust environments.
@@ -385,7 +392,7 @@
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
-            <div class="timeline-date">2026</div>
+            <div class="timeline-date">ARC I • 2026</div>
             <h4 class="timeline-heading">High-Concurrency Web & Mobile Deployments</h4>
             <p class="timeline-desc">
               Created <strong>ngl</strong> anonymous social feedback platform and <strong>TapSOS</strong> distress beacon mobile application with real-time geolocation tracking.
@@ -393,14 +400,15 @@
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- INTERACTIVE CYBER TERMINAL -->
-    <section id="terminal">
+    <!-- ==================== PAGE 5: CYBER TERMINAL ==================== -->
+    <div id="page-terminal" class="page-view">
       <div class="section-header">
+        <div class="anime-subtitle">// ターミナル • OPERATOR SHELL</div>
         <div class="section-tag">INTERACTIVE CONSOLE</div>
         <h2 class="section-title scramble-text" data-text="Core Terminal HUD">Core Terminal HUD</h2>
-        <p class="section-desc">Direct interface to query operator credentials, system repositories, and execute matrix protocols.</p>
+        <p class="section-desc">Direct shell interface to query operator credentials, system repositories, and execute anime matrix protocols (try 'bankai' or 'domain_expansion').</p>
       </div>
 
       <div id="cyber-terminal" class="terminal-wrapper">
@@ -410,8 +418,8 @@
             <span class="term-dot yellow"></span>
             <span class="term-dot green"></span>
           </div>
-          <div class="term-title">jitin-core — zsh — 80x24</div>
-          <div style="font-family: var(--font-mono); font-size: 11px; color: #64748b;">STATUS: READY</div>
+          <div class="term-title">jitin-anime-core — zsh — 80x24</div>
+          <div style="font-family: var(--font-mono); font-size: 11px; color: var(--accent-cyan);">STATUS: READY</div>
         </div>
 
         <div class="term-body">
@@ -423,24 +431,25 @@
             <div class="term-res">
               [INIT] Quantum encryption established.<br/>
               [INIT] Loaded operator profile: <span class="text-glow">Jitin Sain (@jitin-s)</span>.<br/>
-              Type <span class="text-glow">help</span> to view available system commands.
+              Type <span class="text-glow">help</span> to view available system directives or <span class="text-glow">bankai</span> for final release.
             </div>
           </div>
 
           <div class="term-input-row">
             <span class="term-prompt">guest@jitin-core:~$</span>
-            <input type="text" class="term-input" placeholder="type 'help', 'projects', 'skills', or 'matrix'..." autofocus autocomplete="off" />
+            <input type="text" class="term-input" placeholder="type 'help', 'bankai', 'domain_expansion', or 'skills'..." autofocus autocomplete="off" />
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- CONTACT TRANSMISSION -->
-    <section id="contact">
+    <!-- ==================== PAGE 6: TRANSMISSION / CONTACT ==================== -->
+    <div id="page-transmission" class="page-view">
       <div class="section-header">
-        <div class="section-tag">TRANSMISSION FREQUENCY</div>
+        <div class="anime-subtitle">// 通信 • TRANSMISSION UPLINK</div>
+        <div class="section-tag">OPEN FREQUENCIES</div>
         <h2 class="section-title scramble-text" data-text="Initiate Uplink">Initiate Uplink</h2>
-        <p class="section-desc">Ready to discuss high-impact roles, engineering contracts, or innovative collaborations.</p>
+        <p class="section-desc">Ready to discuss high-impact engineering contracts, AI initiatives, or innovative collaborations.</p>
       </div>
 
       <div class="contact-grid">
@@ -508,7 +517,7 @@
           </form>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -516,7 +525,7 @@
         <div class="footer-left">
           <div class="brand-hex" style="width: 28px; height: 28px; font-size: 12px;">JS</div>
           <div class="footer-copy">
-            © <span id="current-year">2026</span> Jitin Sain. Engineered with 3D WebGL, Three.js & Cyber Aesthetics.
+            © <span id="current-year">2026</span> Jitin Sain. Engineered with Three.js 3D WebGL, Anime Aesthetics & Cyber Speedlines.
           </div>
         </div>
 

@@ -2,21 +2,26 @@ import './style.css';
 import { Cyber3DScene } from './three-scene.js';
 import { sound } from './sound.js';
 import { InteractiveTerminal } from './terminal.js';
+import { AppRouter } from './router.js';
+import { animeFX } from './anime-effects.js';
 import { fetchLiveGitHubData, formatTimeAgo, getProjectData } from './github.js';
 import confetti from 'canvas-confetti';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Initialize Three.js 3D WebGL Scene
+  // 1. Initialize Multi-Page SPA Router
+  const router = new AppRouter();
+
+  // 2. Initialize Three.js 3D WebGL Scene
   try {
     new Cyber3DScene('webgl-container');
   } catch (err) {
     console.error('Three.js scene initialization error:', err);
   }
 
-  // 2. Initialize Interactive Terminal
+  // 3. Initialize Interactive Terminal
   new InteractiveTerminal('cyber-terminal');
 
-  // 3. Mouse Spotlight Tracker
+  // 4. Mouse Spotlight Tracker
   const spotlight = document.getElementById('mouse-spotlight');
   if (spotlight) {
     window.addEventListener('mousemove', (e) => {
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 4. Sound Toggle
+  // 5. Sound Toggle
   const soundBtn = document.getElementById('sound-toggle');
   const soundInd = document.getElementById('sound-indicator');
   const soundText = document.getElementById('sound-text');
@@ -44,16 +49,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 5. Sound effects for interactive elements
+  // 6. Global Sound Effects
   function attachSoundEffects(elements) {
     elements.forEach((el) => {
       el.addEventListener('mouseenter', () => sound.playHover());
       el.addEventListener('click', () => sound.playClick());
     });
   }
-  attachSoundEffects(document.querySelectorAll('button, .btn-primary, .btn-secondary, .nav-link, .filter-tab, .channel-btn, .vibe-pill'));
+  attachSoundEffects(document.querySelectorAll('button, .btn-primary, .btn-secondary, .nav-link, .filter-tab, .channel-btn, .vibe-pill, .dock-item'));
 
-  // 6. 3D Tilt Card Physics Engine
+  // 7. 3D Tilt Card Physics Engine
   function applyTiltToCards(cards) {
     cards.forEach((card) => {
       const glare = card.querySelector('.card-glare');
@@ -71,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
 
         if (glare) {
-          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(255, 255, 255, 0.12) 0%, transparent 70%)`;
+          glare.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(0, 240, 255, 0.15) 0%, transparent 70%)`;
         }
       });
 
@@ -82,7 +87,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
   applyTiltToCards(document.querySelectorAll('.tilt-card'));
 
-  // 7. Text Scrambler / Decrypt Effect
+  // 8. Text Scrambler / Decrypt Effect
   const scrambleElements = document.querySelectorAll('.scramble-text');
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
 
@@ -109,7 +114,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     el.addEventListener('mouseenter', () => scramble(el));
   });
 
-  // 8. Magnetic Physics on CTA Buttons (Gen-Z micro-interaction)
+  // 9. Magnetic Physics on CTA Buttons
   const magneticButtons = document.querySelectorAll('.btn-primary, .btn-secondary, .brand-hex');
   magneticButtons.forEach((btn) => {
     btn.addEventListener('mousemove', (e) => {
@@ -123,22 +128,22 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   });
 
-  // 9. LIVE GITHUB AUTO-SYNC & DYNAMIC POPULATION
+  // 10. LIVE GITHUB AUTO-SYNC & DYNAMIC POPULATION
   const tickerText = document.getElementById('ticker-text');
   const repoMetric = document.getElementById('metric-repos');
   const projectsGrid = document.getElementById('projects-grid');
+  const homeProjectsGrid = document.getElementById('home-featured-grid');
+
+  let allProjectsData = [];
 
   try {
     const githubData = await fetchLiveGitHubData();
 
     if (githubData && githubData.user) {
-      // Update Real-Time Metric
       if (repoMetric) {
         repoMetric.innerText = `${githubData.user.public_repos || 11}+`;
-        repoMetric.dataset.target = githubData.user.public_repos || 11;
       }
 
-      // Update Ticker with latest commit / push event
       if (tickerText && githubData.events && githubData.events.length > 0) {
         const pushEvent = githubData.events.find((e) => e.type === 'PushEvent') || githubData.events[0];
         if (pushEvent) {
@@ -148,61 +153,84 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
       }
 
-      // Dynamically Render Projects from GitHub API
-      if (projectsGrid && githubData.repos && githubData.repos.length > 0) {
-        projectsGrid.innerHTML = ''; // Fresh dynamic render from live GitHub!
+      if (githubData.repos && githubData.repos.length > 0) {
+        allProjectsData = githubData.repos.map((repo) => getProjectData(repo));
 
-        githubData.repos.forEach((repo) => {
-          const p = getProjectData(repo);
+        function renderProjectsList(container, projects) {
+          if (!container) return;
+          container.innerHTML = '';
 
-          const card = document.createElement('div');
-          card.className = 'tilt-card project-card';
-          card.dataset.category = p.category;
+          projects.forEach((p) => {
+            const card = document.createElement('div');
+            card.className = 'tilt-card project-card';
+            card.dataset.category = p.category;
 
-          const liveBtnHtml = p.liveUrl
-            ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
-                 <span>Live Console</span>
-                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-               </a>`
-            : '';
+            const liveBtnHtml = p.liveUrl
+              ? `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-live">
+                   <span>Launch Portal</span>
+                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                 </a>`
+              : '';
 
-          const tagsHtml = p.tags.map((t) => `<span class="tech-tag">${t}</span>`).join('');
+            const tagsHtml = p.tags.map((t) => `<span class="tech-tag">${t}</span>`).join('');
 
-          card.innerHTML = `
-            <div class="card-glare"></div>
-            <div>
-              <div class="card-top">
-                <div class="project-icon-box">${p.icon}</div>
-                <span class="project-category-badge">${p.badge}</span>
+            card.innerHTML = `
+              <div class="card-glare"></div>
+              <div>
+                <div class="card-top">
+                  <div class="project-icon-box">${p.icon}</div>
+                  <span class="project-category-badge">${p.badge}</span>
+                </div>
+                <h3 class="project-title">${p.title}</h3>
+                <p class="project-desc">${p.desc}</p>
+                <div class="project-tags">
+                  ${tagsHtml}
+                  <span class="tech-tag" style="color:#00f0ff;">⚡ ${formatTimeAgo(p.updatedAt)}</span>
+                </div>
               </div>
-              <h3 class="project-title">${p.title}</h3>
-              <p class="project-desc">${p.desc}</p>
-              <div class="project-tags">
-                ${tagsHtml}
-                <span class="tech-tag" style="color:#38bdf8;">⚡ ${formatTimeAgo(p.updatedAt)}</span>
+              <div class="project-links">
+                ${liveBtnHtml}
+                <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
+                  <span>GitHub (${p.stars}★)</span>
+                </a>
               </div>
-            </div>
-            <div class="project-links">
-              ${liveBtnHtml}
-              <a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-link btn-card-code">
-                <span>GitHub (${p.stars}★)</span>
-              </a>
-            </div>
-          `;
+            `;
+            container.appendChild(card);
+          });
 
-          projectsGrid.appendChild(card);
-        });
+          applyTiltToCards(container.querySelectorAll('.tilt-card'));
+          attachSoundEffects(container.querySelectorAll('.btn-card-link, .tilt-card'));
+        }
 
-        // Re-apply tilt physics and sound to newly rendered cards
-        applyTiltToCards(projectsGrid.querySelectorAll('.tilt-card'));
-        attachSoundEffects(projectsGrid.querySelectorAll('.btn-card-link, .tilt-card'));
+        renderProjectsList(projectsGrid, allProjectsData);
+        if (homeProjectsGrid) {
+          renderProjectsList(homeProjectsGrid, allProjectsData.slice(0, 4));
+        }
       }
     }
   } catch (err) {
     console.warn('Live GitHub sync error:', err);
   }
 
-  // 10. Filter Tabs Handler
+  // 11. Projects Search Filter
+  const searchInput = document.getElementById('project-search');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      const cards = projectsGrid.querySelectorAll('.project-card');
+
+      cards.forEach((card) => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(term)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+
+  // 12. Filter Tabs Handler
   const filterTabs = document.querySelectorAll('.filter-tab');
   filterTabs.forEach((tab) => {
     tab.addEventListener('click', () => {
@@ -210,42 +238,35 @@ document.addEventListener('DOMContentLoaded', async () => {
       tab.classList.add('active');
 
       const filter = tab.dataset.filter;
-      const cards = document.querySelectorAll('.project-card');
+      const cards = projectsGrid.querySelectorAll('.project-card');
 
       cards.forEach((card) => {
         const cat = card.dataset.category;
         if (filter === 'all' || cat === filter) {
           card.style.display = 'flex';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'perspective(1000px) scale(1)';
-          }, 40);
         } else {
-          card.style.opacity = '0';
-          card.style.transform = 'perspective(1000px) scale(0.96)';
-          setTimeout(() => {
-            card.style.display = 'none';
-          }, 200);
+          card.style.display = 'none';
         }
       });
     });
   });
 
-  // 11. Interactive Vibe Pills celebration
+  // 13. Interactive Vibe Pills celebration
   const vibePills = document.querySelectorAll('.vibe-pill');
   vibePills.forEach((pill) => {
     pill.addEventListener('click', () => {
-      sound.playSuccess();
+      sound.playPowerUp();
+      animeFX.triggerSpeedlines(700);
       confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.3 },
-        colors: ['#38bdf8', '#c084fc', '#ffffff']
+        particleCount: 60,
+        spread: 70,
+        origin: { y: 0.35 },
+        colors: ['#00f0ff', '#ff0055', '#ffffff']
       });
     });
   });
 
-  // 12. Contact Form & Celebration
+  // 14. Contact Form Submission
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
@@ -259,14 +280,15 @@ document.addEventListener('DOMContentLoaded', async () => {
       setTimeout(() => {
         submitBtn.innerText = 'TRANSMISSION DISPATCHED';
         if (formStatus) {
-          formStatus.innerHTML = `<span style="color: #34d399;">✔ Signal received. Stand by for quantum uplink.</span>`;
+          formStatus.innerHTML = `<span style="color: #00f0ff; font-weight: 700;">✔ Signal received. Stand by for quantum uplink.</span>`;
         }
-        sound.playSuccess();
+        sound.playPowerUp();
+        animeFX.triggerSpeedlines(1200);
         confetti({
           particleCount: 160,
           spread: 90,
           origin: { y: 0.7 },
-          colors: ['#cbd5e1', '#ffffff', '#64748b', '#38bdf8']
+          colors: ['#00f0ff', '#ffffff', '#ff0055', '#a855f7']
         });
         contactForm.reset();
         setTimeout(() => {
@@ -277,13 +299,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   }
 
-  // 13. Copy Helper
+  // 15. Copy Helper
   window.copyText = (text, btnElement) => {
     navigator.clipboard.writeText(text).then(() => {
       const original = btnElement.innerText;
       btnElement.innerText = 'COPIED!';
-      btnElement.style.background = '#10b981';
-      btnElement.style.color = '#ffffff';
+      btnElement.style.background = '#00f0ff';
+      btnElement.style.color = '#08080c';
       sound.playSuccess();
 
       setTimeout(() => {
@@ -294,7 +316,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     });
   };
 
-  // 14. Back to Top
+  // 16. Back to Top
   const backToTop = document.getElementById('back-to-top');
   if (backToTop) {
     backToTop.addEventListener('click', () => {
