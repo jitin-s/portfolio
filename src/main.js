@@ -6,7 +6,7 @@ import { AppRouter } from './router.js';
 import { animeFX } from './anime-effects.js';
 import { SukunaCharacterEngine } from './sukuna-character.js';
 import { AnimeCycleEngine } from './anime-cycle.js';
-import { fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
+import { DEFAULT_GITHUB_DATA, fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
 import confetti from 'canvas-confetti';
 
 // Ensure browser always starts strictly at the top of the page on refresh or initial load
@@ -314,9 +314,10 @@ async function initApp() {
   // Load Initial Data
   try {
     const initialData = await fetchLiveGitHubData();
-    if (initialData) applyGitHubData(initialData);
+    applyGitHubData(initialData || DEFAULT_GITHUB_DATA);
   } catch (err) {
     console.warn('Initial GitHub data load note:', err);
+    applyGitHubData(DEFAULT_GITHUB_DATA);
   }
 
   // Listen to background revalidation updates
