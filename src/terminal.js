@@ -39,7 +39,7 @@ export class InteractiveTerminal {
 2. <a href="https://github.com/jitin-s/SetuXAI_Bot" target="_blank" class="term-link">SetuXAI_Bot</a> - Secure Interoperability Bridge & Intelligent AI Bot [Live: setuxai.vercel.app]
 3. <a href="https://github.com/jitin-s/Agniveer-Sentinel" target="_blank" class="term-link">Agniveer-Sentinel</a> - Autonomous Threat Detection Network Sentinel
 4. <a href="https://github.com/jitin-s/ngl" target="_blank" class="term-link">ngl-platform</a> - High-concurrency Anonymous Messaging Feed [Live: ngl-jitin-io.vercel.app]
-5. <a href="https://github.com/jitin-s/MuscleHut" target="_blank" class="term-link">MuscleHut</a> - Fitness Ecosystem [Live: musclehut-nine.vercel.app]
+5. <a href="https://github.com/jitin-s/MuscleHut" target="_blank" class="term-link">MuscleHut</a> - Fitness Ecosystem [Live: musclehutt.vercel.app]
 6. <a href="https://github.com/jitin-s/Payments-Without-Internet" target="_blank" class="term-link">Flowpay</a> - Encrypted Mesh Peer-to-Peer Transactions
 `,
       skills: () => `

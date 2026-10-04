@@ -9,7 +9,7 @@
 - **SetuX & SetuXAI Bot**: Enterprise System Interoperability Layer & Autonomous Bot (`setuxai.vercel.app`)
 - **Agniveer-Sentinel**: Autonomous Electronic Network Threat Identification & Neutralization
 - **ngl**: Real-Time Anonymous Feedback Social Engine (`ngl-jitin-io.vercel.app`)
-- **MuscleHut**: Modern Fitness & Gym Web App (`musclehut-nine.vercel.app`)
+- **MuscleHut**: Modern Fitness & Gym Web App (`musclehutt.vercel.app`)
 - **Flowpay**: Encrypted Offline Peer-to-Peer Transaction Protocol
 - **TapSOS**: Tactile Emergency Distress Mobile App
 - **SmartDealsHub**: Automated E-Commerce Flash Deals Aggregator (`smartdealshub.vercel.app`)

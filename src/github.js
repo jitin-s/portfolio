@@ -1,6 +1,6 @@
 // Live GitHub Real-Time Data & Auto-Sync Engine for @jitin-s
 const USERNAME = 'jitin-s';
-const CACHE_KEY = 'jitin_github_data_v2';
+const CACHE_KEY = 'jitin_github_data_v3';
 const CACHE_TTL = 30 * 1000; // 30 seconds cache TTL for super fresh updates
 
 // Complete verified default data for @jitin-s so the UI is 100% operational immediately
@@ -23,7 +23,7 @@ export const DEFAULT_GITHUB_DATA = {
       forks_count: 0,
       language: 'JavaScript',
       html_url: 'https://github.com/jitin-s/portfolio',
-      homepage: 'https://jitin-portfolio.vercel.app',
+      homepage: 'https://jitinsain.vercel.app',
       pushed_at: '2026-10-03T17:30:45Z',
       updated_at: '2026-10-03T17:30:45Z'
     },
@@ -78,7 +78,7 @@ export const DEFAULT_GITHUB_DATA = {
       forks_count: 0,
       language: 'HTML',
       html_url: 'https://github.com/jitin-s/MuscleHut',
-      homepage: 'https://musclehut-nine.vercel.app',
+      homepage: 'https://musclehutt.vercel.app',
       pushed_at: '2026-10-02T17:49:22Z',
       updated_at: '2026-10-02T17:49:22Z'
     },
@@ -144,7 +144,7 @@ export const DEFAULT_GITHUB_DATA = {
       forks_count: 0,
       language: 'TypeScript',
       html_url: 'https://github.com/jitin-s/demo',
-      homepage: null,
+      homepage: 'https://demo-jitin-io.vercel.app',
       pushed_at: '2026-09-24T16:59:31Z',
       updated_at: '2026-09-24T16:59:31Z'
     }
@@ -166,7 +166,7 @@ const REPO_METADATA = {
     badge: 'Flagship 3D',
     icon: '🌌',
     desc: 'GenZ aesthetic 3D dark anime portfolio with real-time GitHub sync, Three.js WebGL, and Sukuna interactive animations.',
-    liveUrl: 'https://jitin-portfolio.vercel.app',
+    liveUrl: 'https://jitinsain.vercel.app',
     tags: ['Vite', 'Three.js', 'Sukuna FX', 'Vercel']
   },
   'portfolio-': {
@@ -175,7 +175,7 @@ const REPO_METADATA = {
     badge: 'Flagship 3D',
     icon: '🌌',
     desc: 'GenZ aesthetic 3D dark anime portfolio with real-time GitHub sync, Three.js WebGL, and Sukuna interactive animations.',
-    liveUrl: 'https://jitin-portfolio.vercel.app',
+    liveUrl: 'https://jitinsain.vercel.app',
     tags: ['Vite', 'Three.js', 'Sukuna FX', 'Vercel']
   },
   'jitin-s': {
@@ -238,7 +238,7 @@ const REPO_METADATA = {
     badge: 'Web App',
     icon: '🏋️',
     desc: 'Aesthetic modern gym & fitness web platform featuring workout scheduling and membership tiers.',
-    liveUrl: 'https://musclehut-nine.vercel.app',
+    liveUrl: 'https://musclehutt.vercel.app',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Vercel']
   },
   'Payments-Without-Internet': {
@@ -274,7 +274,7 @@ const REPO_METADATA = {
     badge: 'Prototype',
     icon: '🧪',
     desc: 'Full-stack experimental reactive interface and architectural prototype.',
-    liveUrl: null,
+    liveUrl: 'https://demo-jitin-io.vercel.app',
     tags: ['TypeScript', 'Vite', 'React']
   }
 };
@@ -467,6 +467,12 @@ export function formatTimeAgo(dateString) {
 
 export function getProjectData(repo) {
   const custom = REPO_METADATA[repo.name] || {};
+  // Always prioritize the live homepage directly from GitHub API!
+  const liveUrl =
+    repo.homepage && typeof repo.homepage === 'string' && repo.homepage.trim() !== ''
+      ? repo.homepage.trim()
+      : custom.liveUrl || null;
+
   return {
     name: repo.name,
     title: custom.title || repo.name.replace(/[-_]/g, ' '),
@@ -474,7 +480,7 @@ export function getProjectData(repo) {
     badge: custom.badge || repo.language || 'Codebase',
     icon: custom.icon || '🚀',
     desc: custom.desc || repo.description || 'Open source architecture and system codebase on GitHub.',
-    liveUrl: custom.liveUrl || repo.homepage || null,
+    liveUrl,
     githubUrl: repo.html_url,
     tags: custom.tags || [repo.language || 'Code', 'Open Source', `${repo.stargazers_count || 0}★`],
     stars: repo.stargazers_count,
