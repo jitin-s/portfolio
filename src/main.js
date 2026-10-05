@@ -7,6 +7,7 @@ import { animeFX } from './anime-effects.js';
 import { SukunaCharacterEngine } from './sukuna-character.js';
 import { AnimeCycleEngine } from './anime-cycle.js';
 import { DEFAULT_GITHUB_DATA, fetchLiveGitHubData, forceSyncGitHub, formatTimeAgo, getProjectData, startRealtimeGitHubSync } from './github.js';
+import { CyberCommandPalette } from './command-palette.js';
 import confetti from 'canvas-confetti';
 
 // Ensure browser always starts strictly at the top of the page on refresh or initial load
@@ -24,6 +25,9 @@ async function initApp() {
 
   // 1. Initialize Multi-Page SPA Router
   const router = new AppRouter();
+
+  // 1b. Initialize Cyber Command Palette (Neural Directives HUD)
+  const commandPalette = new CyberCommandPalette(router);
 
   // 2. Initialize 20-Second Autonomous Anime Manifestation Cycle
   const animeCycle = new AnimeCycleEngine({ intervalMs: 20000 });

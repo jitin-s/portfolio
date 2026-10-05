@@ -60,6 +60,13 @@
     </nav>
 
     <div class="nav-actions">
+      <!-- Neural Command Palette Directive Trigger -->
+      <button id="btn-open-palette" class="btn-palette-trigger" aria-label="Open Command Directives (Ctrl+K)" title="Neural Directives (Ctrl+K / ⌘K)">
+        <span class="palette-icon">⚡</span>
+        <span class="palette-label">DIRECTIVES</span>
+        <kbd class="palette-kbd">⌘K</kbd>
+      </button>
+
       <!-- Sukuna Background Extension Toggle Button -->
       <button id="bg-extension-toggle" class="btn-bg-toggle active" aria-label="Toggle Sukuna Background Extension" title="Toggle Sukuna Background Extension">
         <span class="bg-toggle-icon">👁️</span>
@@ -107,10 +114,10 @@
       <span class="dock-icon">💻</span>
       <span>Shell</span>
     </a>
-    <a href="#/transmission" data-route="transmission" class="dock-item">
-      <span class="dock-icon">📡</span>
-      <span>Comms</span>
-    </a>
+    <button id="btn-dock-palette" class="dock-item btn-open-palette" aria-label="Neural Directives">
+      <span class="dock-icon">⚡</span>
+      <span>⌘K</span>
+    </button>
   </nav>
 
   <div class="app-container">
