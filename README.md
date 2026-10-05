@@ -16,7 +16,7 @@
 
 ---
 
-## 🛠️ Features & Animations
+### 🛠️ Features & Animations
 1. **Interactive 3D WebGL Canvas Layer (Three.js)**:
    - Dynamic undulating particle terrain responding to mouse cursor and 3D scroll depth.
    - Central Gyroscopic 3D Holographic Polyhedron with interactive orbital rings and camera fly-through.
@@ -33,7 +33,7 @@
 
 ---
 
-## 💻 Local Development
+### 💻 Local Development
 
 ```bash
 # Install dependencies
