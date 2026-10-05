@@ -1,4 +1,4 @@
-# ⚡ Jitin Sain — 3D Cyber Portfolio
+## ⚡ Jitin Sain — 3D Cyber Portfolio
 
 > Fully animated, ultra-responsive Dark & Grey 3D WebGL Portfolio with interactive Three.js cyber terrain, gyroscopic core, 3D card physics, cyber terminal simulator, and synthesizer audio feedback.
 
