@@ -192,10 +192,10 @@ export class CyberCommandPalette {
         category: 'SYSTEM PROTOCOLS',
         icon: '📋',
         title: 'Copy Developer Direct Email',
-        desc: 'Copy jitinsain.work@gmail.com directly to clipboard',
+        desc: 'Copy jitinsain270@gmail.com directly to clipboard',
         shortcut: 'C M',
         action: () => {
-          navigator.clipboard.writeText('jitinsain.work@gmail.com').then(() => {
+          navigator.clipboard.writeText('jitinsain270@gmail.com').then(() => {
             sound.playSuccess();
             confetti({
               particleCount: 50,

@@ -58,7 +58,7 @@ export class InteractiveTerminal {
       contact: () => `
 <span class="font-bold text-white">TRANSMISSION FREQUENCIES:</span>
 • GitHub: <a href="https://github.com/jitin-s" target="_blank" class="term-link">github.com/jitin-s</a>
-• Developer Mail: jitinsain.work@gmail.com
+• Developer Mail: jitinsain270@gmail.com
 • Signal Status: [OPEN TO TRANSMIT]
 `,
       github: () => {
