@@ -82,7 +82,7 @@ async function initApp() {
         ambientBg.classList.add('active');
         bgToggleBtn.classList.remove('muted');
         bgToggleBtn.classList.add('active');
-        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">👁️</span><span class="bg-toggle-text">SUKUNA BG: ON</span>';
+        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">👁️</span><span class="bg-toggle-text">Sukuna BG: ON</span>';
         confetti({
           particleCount: 60,
           spread: 70,
@@ -93,7 +93,7 @@ async function initApp() {
         ambientBg.classList.remove('active');
         bgToggleBtn.classList.remove('active');
         bgToggleBtn.classList.add('muted');
-        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">🕶️</span><span class="bg-toggle-text">SUKUNA BG: OFF</span>';
+        bgToggleBtn.innerHTML = '<span class="bg-toggle-icon">🕶️</span><span class="bg-toggle-text">Sukuna BG: OFF</span>';
       }
     });
   }
@@ -113,9 +113,9 @@ async function initApp() {
       const active = animeFX.toggleAwakening();
       sound.playPowerUp();
       if (active) {
-        auraBtn.innerHTML = '<span>🔥 AURA ACTIVE</span>';
+        auraBtn.innerHTML = '<span>🔥 Aura: ON</span>';
         auraBtn.style.borderColor = '#ff0055';
-        auraBtn.style.boxShadow = '0 0 20px #ff0055';
+        auraBtn.style.boxShadow = '0 0 10px rgba(255, 0, 85, 0.4), inset 0 0 6px rgba(255, 0, 85, 0.2)';
         confetti({
           particleCount: 100,
           spread: 80,
@@ -123,7 +123,7 @@ async function initApp() {
           colors: ['#00f0ff', '#ff0055', '#ffffff']
         });
       } else {
-        auraBtn.innerHTML = '<span>⚡ AWAKEN AURA</span>';
+        auraBtn.innerHTML = '<span>⚡ Awaken Aura</span>';
         auraBtn.style.borderColor = '';
         auraBtn.style.boxShadow = '';
       }
@@ -138,12 +138,12 @@ async function initApp() {
     soundToggleBtn.addEventListener('click', () => {
       const active = sound.toggle();
       if (active) {
-        if (soundText) soundText.innerText = 'SOUND: ON';
+        if (soundText) soundText.innerText = 'Sound: ON';
         if (soundIndicator) soundIndicator.classList.remove('muted');
         soundToggleBtn.classList.remove('muted');
         sound.playClick();
       } else {
-        if (soundText) soundText.innerText = 'SOUND: OFF';
+        if (soundText) soundText.innerText = 'Sound: OFF';
         if (soundIndicator) soundIndicator.classList.add('muted');
         soundToggleBtn.classList.add('muted');
       }

@@ -465,7 +465,7 @@ body.anime-aura-active .tilt-card {
   background: rgba(255, 0, 85, 0.22);
   border-color: #ff0055;
   color: #ffffff;
-  box-shadow: 0 0 16px rgba(255, 0, 85, 0.45);
+  box-shadow: 0 0 10px -2px rgba(255, 0, 85, 0.45), inset 0 0 6px rgba(255, 0, 85, 0.2);
 }
 
 .sukuna-action-pill.active.smirk {
@@ -738,7 +738,7 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 .btn-vault-sync:hover {
   background: #00f0ff;
   color: #08080c;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 10px -2px rgba(0, 240, 255, 0.45), inset 0 0 6px rgba(0, 240, 255, 0.2);
 }
 
 /* App Container */
@@ -758,22 +758,23 @@ body.anime-aura-active .sukuna-ambient-bg.active,
   transform: translateX(-50%);
   width: min(calc(100% - 40px), 1260px);
   height: 64px;
-  background: rgba(10, 10, 15, 0.84);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 15, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 9999px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 22px;
   z-index: 130;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.72), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 36px -6px rgba(0, 0, 0, 0.78), 0 4px 12px -2px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.12);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .navbar:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.24);
+  box-shadow: 0 22px 44px -6px rgba(0, 0, 0, 0.85), 0 0 20px rgba(0, 240, 255, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .brand {
@@ -782,6 +783,8 @@ body.anime-aura-active .sukuna-ambient-bg.active,
   gap: 12px;
   text-decoration: none;
   cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .brand-hex {
@@ -797,67 +800,88 @@ body.anime-aura-active .sukuna-ambient-bg.active,
   font-weight: 800;
   font-size: 14px;
   color: #ffffff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.08);
-  transition: transform 0.2s ease;
+  box-shadow: 0 0 8px -2px rgba(255, 255, 255, 0.2);
+  transition: transform 0.25s var(--ease-spring-snap), border-color 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
 }
 
 .brand:hover .brand-hex {
-  transform: rotate(-6deg) scale(1.06);
+  transform: scale(1.05) rotate(6deg);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px -1px rgba(0, 240, 255, 0.5), inset 0 0 6px rgba(0, 240, 255, 0.25);
 }
 
 .brand-text {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 17px;
-  letter-spacing: -0.02em;
+  font-size: 16.5px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   color: var(--text-main);
+  white-space: nowrap;
 }
 
 .brand-tag {
   font-family: var(--font-mono);
   font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
   background: rgba(0, 240, 255, 0.1);
-  border: 1px solid rgba(0, 240, 255, 0.25);
-  padding: 2px 7px;
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  padding: 3px 8px;
   border-radius: 6px;
   color: var(--accent-cyan);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
 }
 
 .nav-link {
   font-size: 13.5px;
   font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   color: var(--text-muted);
   text-decoration: none;
   position: relative;
-  padding: 6px 12px;
-  border-radius: 8px;
+  padding: 7px 14px;
+  border-radius: 999px;
   transition: all 0.2s ease;
   cursor: pointer;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-link.active {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  box-shadow: 0 0 10px -2px rgba(0, 240, 255, 0.3), inset 0 0 8px rgba(0, 240, 255, 0.15);
 }
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 /* Sukuna Background Extension Toggle Button */
@@ -880,7 +904,7 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 
 .btn-bg-toggle:hover {
   background: rgba(255, 0, 85, 0.25);
-  box-shadow: 0 0 16px rgba(255, 0, 85, 0.45);
+  box-shadow: 0 0 10px -2px rgba(255, 0, 85, 0.45), inset 0 0 6px rgba(255, 0, 85, 0.2);
   transform: scale(1.03);
   color: #ffffff;
 }
@@ -919,7 +943,7 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 .btn-awakening:hover {
   background: linear-gradient(135deg, rgba(0, 240, 255, 0.3), rgba(255, 0, 85, 0.3));
   border-color: #00f0ff;
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 10px -2px rgba(0, 240, 255, 0.45), inset 0 0 6px rgba(0, 240, 255, 0.2);
   transform: scale(1.04);
 }
 
@@ -975,7 +999,7 @@ body.anime-aura-active .sukuna-ambient-bg.active,
 .btn-github:hover {
   background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px -2px rgba(255, 255, 255, 0.3);
 }
 
 /* ==================== CYBER MOBILE HAMBURGER BUTTON ==================== */
@@ -1775,7 +1799,7 @@ body.nav-drawer-open .mobile-bottom-dock {
 .btn-card-live:hover {
   background: var(--accent-cyan);
   color: #08080c;
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 10px -2px rgba(0, 240, 255, 0.45), inset 0 0 6px rgba(0, 240, 255, 0.2);
 }
 
 .btn-card-code {
@@ -3108,15 +3132,13 @@ footer {
   outline: 3px solid #ffffff;
 }
 
-/* Navbar Bottom Border Subtle Glow */
+/* Navbar Subtle Inner Border Highlight */
 .navbar::after {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3) 50%, transparent);
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.06);
   pointer-events: none;
 }
 
@@ -3142,19 +3164,7 @@ footer {
   position: relative;
 }
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--accent-cyan);
-  transition: width 0.25s var(--ease-out-expo), left 0.25s var(--ease-out-expo);
-  border-radius: 2px;
-}
-.nav-link:hover::after {
-  width: 70%;
-  left: 15%;
+  display: none;
 }
 
 @media (max-width: 900px) {
@@ -3195,7 +3205,7 @@ footer {
 }
 
 .btn-palette-trigger:hover {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 10px -2px rgba(0, 240, 255, 0.45), inset 0 0 6px rgba(0, 240, 255, 0.2);
   border-color: var(--accent-cyan);
 }
 
